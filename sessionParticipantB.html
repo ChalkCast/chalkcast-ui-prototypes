@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css" >
+    <link rel="stylesheet" href="./css/styleB.css" >
+    <!-- <link rel="stylesheet" href="./css/styleBubbles.css" > -->
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   
+  </head>
+
+  <body class="darkbody">
+    <div style="padding: 0;">
+      
+      <div id="yourStream" class="active" onclick="expandYourStream()"></div>
+      <div id="yourRaisedHand"></div>
+
+      <ul class="informationToggles">
+          <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
+          <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
+          <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
+      </ul>
+
+      <ul class="toolbar">
+        <!-- <li id="nudge" onclick="toggleNudge()"></li> -->
+        <!-- <li id="raisehand" onclick="toggleRaisedHand()"></li> -->
+        <li id="chat" onclick="togglePanel('chat')"></li>
+        <li id="groups"></li>
+        <li id="chalk" onclick="toggleChalkboard()"></li>
+        <li id="quiz" onclick="togglePanel('quiz')"></li>
+        <li id="settings" onclick="togglePanel('settings')"></li>
+        <li id="exit"></li>
+      </ul>
+
+      <div id="mobileNav">
+      </div>
+
+      <div id="panel">
+          <div id="panel-chat" style="display: none">
+            <h4 class="title">Chat</h4>
+            <div class="exit" onclick="togglePanel('chat')"></div>
+            <ul id="chatList">
+                <li onclick="toggleThread('Everyone')">Everyone</li>
+            </ul>
+          </div>
+
+          <div id="panel-settings" style="display: none">
+            <div class="exit" onclick="togglePanel('settings')"></div>
+            <h4 class="title">Settings</h4>
+            <div class="panelSection">
+              <h4>Room Link</h4>
+              <div class="button">Copy Link</div>
+            </div>
+            <div class="panelSection">
+              <h4>Participant Features</h4>
+              <p>Screen Share</p>
+              <p>Chat with Everyone</p>
+              <p>Direct Message Chat</p>
+            </div>
+            <div class="panelSection">
+              <h4>Preferences</p>
+              <p>Upon entry, mic is OFF</p>
+              <p>Upon entry, camera is OFF</p>
+              <p>Microphone</p>
+              <p>Audio Output</p>
+              <p>Video Source</p>
+            </div>
+          </div>
+      </div>
+
+      <div id="chatThread" style="display: block">
+        <h4 class="title" id="threadName">Phil Mok</h4>
+        <div class="back" onclick="toggleThread('exit')"></div>
+        <ul class="chatFilter">
+          <li onclick="chatFilter('all')" class="active">All</li><li onclick="chatFilter('questions')">Questions</li><li onclick="chatFilter('links')">Links</li>
+        </ul>
+        <ul class="chatContainer">
+          <li class="chat">
+            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
+            <div class="chatBubble">This is a chat that someone sent.</div>
+          </li>
+          <li class="chat">
+            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
+            <div class="chatBubble">This is a longer chat that someone sent where they rambled on.</div>
+          </li>
+        </ul>
+        <div class="chatInputContainer">
+          <input class="chatInput" placeholder="Type something here"></input>
+        </div>
+      </div>
+
+      <div id="chalkboardContainer">
+        <canvas id="chalkboard" class="chalkboard" hidpi="off" resize>     </canvas>
+        <div class="exit" onclick="toggleChalkboard()"></div>
+        <ul id="toolbar">
+          <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
+          <li id="blue" onclick="changeColor('blue')"></li>
+          <li id="green" onclick="changeColor('green')"></li>
+          <li id="red" onclick="changeColor('red')"></li>
+          <li id="purple" onclick="changeColor('purple')"></li>
+          <li id="orange" onclick="changeColor('orange')"></li>
+          <li id="eraser" onclick="toggleEraser()"></li>
+        </ul>
+      </div>
+ 
+      <ul id="tileToolbar">
+        <li id="nudge"></li>
+        <li id="fullscreen" onclick="toggleFullscreen()"></li>
+      </ul>
+
+      <div id="prevButton" onclick="prevScreen()"></div>
+      <div id="nextButton" onclick="nextScreen()"></div>
+
+      <div id="expandedTile"></div>
+      <ul id="tileList">
+      </ul>      
+
+      <div id="notification">Select a student to nudge</div>
+
+
+    </div>
+
+     <!--Import jQuery before materialize.js-->
+     <!--JS Frameworks-->
+     <script src="./js/paper-full.min.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     <script src="./js/chalkboard.js"></script>
+     <script src="./js/sessionControllerB.js"></script>
+    </body>
+</html>

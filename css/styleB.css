@@ -1,0 +1,92 @@
+#tileList {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 120px);
+    position: absolute;
+    left: 120px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    margin: 0px;
+}
+
+#tileList.expanded {
+    flex-direction: column;
+    left: unset;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+}
+
+#expandedTile {
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+#expandedTile.active {
+    width: calc(80% - 128px);
+    position: fixed;
+    top: 12px;
+    left: 120px;
+    height: calc(100vh - 24px);
+    transition-duration: 0.5s;
+}
+
+#expandedTile.active.fullscreen {
+    width: calc(100% - 120px);
+    position: fixed;
+    top: 0px;
+    left: 120px;
+    height: 100vh;
+    transition-duration: 0.5s;
+}
+
+.tile {
+    height: 250px;
+}
+
+.tile.expanded {
+    order: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tileImage:hover {
+    opacity: 1;
+}
+
+#nextButton {
+    right: 21%;
+}
+
+#tileToolbar {
+    position: fixed;
+}
+
+#nextButton.active {
+    top: 45vh;
+    position: fixed;
+    z-index: 3;
+}
+
+#nextButton.active.expanded {
+    right: 1%;
+}
+
+#prevButton.active {
+    top: 45vh;
+    position: fixed;
+    z-index: 3;
+}
+
+@media only screen and (max-width: 980px), screen and (max-height: 600px) {
+    #expandedTile.active {
+        left: 0px;
+        width: 80%;
+    }
+
+    #tileList {
+        left: 0px;
+        width: 100%;
+    }
+}

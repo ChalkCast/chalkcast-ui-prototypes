@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css" >
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <canvas id="chalkboard" class="chalkboard" hidpi="off" resize></canvas>
+    <div id="toggleBackground" onclick="toggleBackground()">Switch to Chalkboard</div>
+    <div class="exit"></div>
+
+    <ul id="toolbar">
+      <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
+      <li id="blue" onclick="changeColor('blue')"></li>
+      <li id="green" onclick="changeColor('green')"></li>
+      <li id="red" onclick="changeColor('red')"></li>
+      <li id="purple" onclick="changeColor('purple')"></li>
+      <li id="orange" onclick="changeColor('orange')"></li>
+      <li id="eraser" onclick="toggleEraser()"></li>
+    </ul>
+
+  </body>
+      <!--JS Frameworks-->
+      <script type="text/javascript" src="js/paper-full.min.js"></script>
+      <script type="text/javascript" src="js/chalkboard.js"></script>
+      <script>
+        initializePaper();
+      </script>
+</html>

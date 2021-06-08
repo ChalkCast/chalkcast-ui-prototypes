@@ -1,0 +1,54 @@
+.tileImage {
+  border-radius: 28px;
+}
+
+.streamContainer.expanded {
+  margin-top: 12px;
+}
+
+#tileList {
+  margin-top: 12px;
+}
+
+.tile {
+  width: 19.5%;
+  margin: 0px 0.4vw 0.4vw 0px;
+}
+
+#expandedTile.active.fullscreen {
+  border-radius: 0px;
+}
+
+#expandedTile.active.fullscreen .tileImage {
+  border-radius: 0px;
+}
+
+@media only screen and (max-width: 1440px) {
+  .tile {
+    width: 24.6%;
+    margin: 0px 0.4% 0.4% 0px;
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 1024px), screen and (max-height: 600px) {
+  #expandedTile.active {
+      left: 0px;
+      width: 80%;
+      height: calc(100vh - 104px);
+  }
+
+  .tile {
+    width: 32.8%;
+    margin: 0px 0.4% 0.4% 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tile {
+    width: 49.6%;
+    height: 200px;
+    margin: 0px 0.4% 0.4% 0px;
+  }
+
+}
