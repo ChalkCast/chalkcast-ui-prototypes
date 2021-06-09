@@ -1555,7 +1555,7 @@ nav .button-collapse {
   width: 20px;
   border-radius: 10px;
   line-height: 20px;
-  background-color: rgb(63, 171, 221);
+  background-color: #4367AB;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
@@ -1665,7 +1665,7 @@ nav .button-collapse {
   height: 20px;
   width: 20px;
   border-radius: 10px;
-  background-color:rgb(63, 171, 221);
+  background-color:#4367AB;
   float: right;
   margin-top: 12px;
   color: #fff;
@@ -1919,7 +1919,7 @@ nav .button-collapse {
   line-height: 60px;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
-  background-color: #0073a490;
+  background-color: #4367AB80;
   backdrop-filter: blur(30px);
   padding: 0 20px;
   width: 500px;
