@@ -30,71 +30,81 @@
 
         <ul class="toolbar">
           <li id="chat" onclick="togglePanel('chat')"><div id="newChatIndicator">3</div></li>
+          <li id="settings" onclick="togglePanel('settings')"></li>
         </ul>
 
         <div id="exit"></div>
       </div>
 
       <div id="panel">
-          <div id="panel-chat" style="display: none">
-            <h4 class="title">Chat</h4>
-            <div class="exit" onclick="togglePanel('chat')"></div>
-            <ul id="chatList">
-                <li onclick="toggleThread('Everyone')">Everyone</li>
-            </ul>
-          </div>
-
-          <div id="panel-settings" style="display: none">
-            <div class="exit" onclick="togglePanel('settings')"></div>
-            <h4 class="title">Settings</h4>
-            <div class="panelSection">
-              <h4>Room Link</h4>
-              <div class="button">Copy Link</div>
-            </div>
-            <div class="panelSection">
-              <h4>Participant Features</h4>
-              <p>Screen Share</p>
-              <p>Chat with Everyone</p>
-              <p>Direct Message Chat</p>
-            </div>
-            <div class="panelSection">
-              <h4>Preferences</p>
-              <p>Upon entry, mic is OFF</p>
-              <p>Upon entry, camera is OFF</p>
-              <p>Microphone</p>
-              <p>Audio Output</p>
-              <p>Video Source</p>
-            </div>
-          </div>
-      </div>
-
-      <div id="chatThread" style="display: block">
-        <h4 class="title" id="threadName">Phil Mok</h4>
-        <div class="back" onclick="toggleThread('exit')"></div>
-        <div class="button boot">Remove</div>
-        <ul class="chatFilter">
-          <li id="allFilter" onclick="chatFilter('all')" class="active">All</li><li id="questionsFilter" onclick="chatFilter('questions')">Questions</li><li id="linksFilter" onclick="chatFilter('links')">Links</li>
-        </ul>
-        <ul class="chatContainer">
-          <li class="chat">
-            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
-            <div class="chatBubble">This is a chat that someone sent.</div>
-          </li>
-          <li class="chat">
-            <div class="chatCaption"><strong>Student</strong> 12:45PM</div>
-            <div class="chatLabel question">Question</div>
-            <div class="chatBubble">This is a question?</div>
-          </li>
-          <li class="chat">
-            <div class="chatCaption"><strong>Student</strong> 12:55PM</div>
-            <div class="chatLabel link">Link</div>
-            <div class="chatBubble">http://www.chalkcast.org</div>
-          </li>
-        </ul>
-        <div class="chatInputContainer">
-          <input class="chatInput" placeholder="Type something here"></input>
+        <div id="chatPanel" style="display: none">
+          <h4 class="title">Chat</h4>
+          <div class="exit" onclick="togglePanel('chat')"></div>
+          <ul id="chatList">
+              <li onclick="toggleThread('Everyone')">Everyone</li>
+          </ul>
         </div>
+
+        <div id="settingsPanel" style="display: none">
+          <div class="exit" onclick="togglePanel('settings')"></div>
+          <h4 class="title">Settings</h4>
+          <div class="panelSection">
+            <h5>Room Link</h5>
+            <div class="button linkButton">Copy Link</div>
+          </div>
+          <div class="panelSection">
+            <h5>Lock Room</h5>
+            <div class="lockToggle">
+              <div id="unlockedRoom" class="active">Unlocked</div><div id="lockedRoom">Locked</div>
+            </div>
+            <div class="caption">Anyone with the link can join</div>
+          </div>
+          <div class="panelSection">
+            <h5>Participant Features</h5>
+            <div class="feature">Screen Share</div><div class="switch on"></div>
+            <div class="feature">Chat with Everyone</div><div class="switch on"></div>
+            <div class="feature">Direct Message Chat</div><div class="switch on"></div>
+            <div class="clear-0"></div>
+          </div>
+          <div class="panelSection">
+            <h5>Preferences</h5>
+            <div class="feature">Upon entry, mic is OFF</div><div class="switch off"></div>
+            <div class="feature">Upon entry, camera is OFF</div><div class="switch off"></div>
+            <div class="clear-0"></div>
+            <p>Microphone</p>
+            <p>Audio Output</p>
+            <p>Video Source</p>
+          </div>
+        </div>
+    </div>
+
+    <div id="chatThread" style="display: block">
+      <h4 class="title" id="threadName">Phil Mok</h4>
+      <div class="back" onclick="toggleThread('exit')"></div>
+      <div class="button boot">Remove</div>
+      <ul class="chatFilter">
+        <li id="allFilter" onclick="chatFilter('all')" class="active">All</li><li id="questionsFilter" onclick="chatFilter('questions')">Questions</li><li id="linksFilter" onclick="chatFilter('links')">Links</li>
+      </ul>
+      <ul class="chatContainer">
+        <li class="chat">
+          <div class="caption"><strong>Student</strong> 12:45PM</div>
+          <div class="chatBubble">This is a chat that someone sent.</div>
+        </li>
+        <li class="chat">
+          <div class="caption"><strong>Student</strong> 12:45PM</div>
+          <div class="chatLabel question">Question</div>
+          <div class="chatBubble">This is a question?</div>
+        </li>
+        <li class="chat">
+          <div class="caption"><strong>Student</strong> 12:55PM</div>
+          <div class="chatLabel link">Link</div>
+          <div class="chatBubble">http://www.chalkcast.org</div>
+        </li>
+      </ul>
+      <div class="chatInputContainer">
+        <input placeholder="Type something here"></input>
       </div>
+    </div>
 
       <div id="chalkboardContainer">
         <canvas id="chalkboard" class="chalkboard" hidpi="off" resize>     </canvas>
@@ -110,10 +120,20 @@
         </ul>
       </div>
 
-      <div id="notification"><h4>Vape kid has left the session</h4></div>
+      <div id="notification"><h4>Waiting for owner to join room</h4></div>
 
 
-      <canvas id="snakeCanvas"></canvas>  
+      <canvas id="snakeCanvas"></canvas> 
+
+      <div id="score">Score <strong>0</strong></div>
+
+      <div id="gameoverPanel">
+        <h1>Gameover</h1>
+        <div class="clear-20"></div>
+        <h3 id="gameoverScore">Score <strong class="score">0</strong></h3>
+        <div class="clear-20"></div>
+        <div class="button" onclick="startGame()">Restart</div>
+      </div>
     </div>
 
     

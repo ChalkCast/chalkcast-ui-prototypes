@@ -5,6 +5,7 @@ let tileSize = 24;
 
 let snakeHead;
 let snakeBody = [];
+let startingApples
 let apples = [];
 
 let previousDir = 'Right';
@@ -12,38 +13,64 @@ let direction = 'Right';
 let directionVar = 'Right';
 
 let gameActive;
-let gameSpeed = '70';
+let score;
+let gameSpeed;
+
+let appleSound = new Audio('./sounds/zap.wav');
+let gameoverSound = new Audio('./sounds/gameover.wav');
+
 
 //Initialization of PaperJS and attaching to canvas
 paper.install(window);
 
 window.onload = (event) => {
-    initializePaper();
-};
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
 
-//window.onload = function() {
-function initializePaper() { 
     paper.setup(canvas);
     canvasHeight = paper.view.size.height;
     canvasWidth = paper.view.size.width; 
-    
     startGame();
-}
+};
 
 //EventListener to check which arrow key is pressed
 window.addEventListener("keydown", pressedKey);
 
 //Initializes snake
 function startGame() {
-    gameActive;
 
+    //Clear paper canvas
+    paper.project.clear();
+    //Reset score
+    score = 0;
+    if (document.getElementById('gameoverPanel').className === 'active') {
+        document.getElementById('gameoverPanel').classList.toggle('active');
+    }
+    document.getElementById('score').innerHTML = "Score <strong class='score'>0</strong>";
+
+    //Reset other variables
+    gameActive;
+    gameSpeed = '70';
+    startingApples = 10;
+    previousDir = 'Right';
+    direction = 'Right';
+    directionVar = 'Right';
+    snakeHead;
+    snakeBody = [];
+    apples = [];
+    clearInterval(gameActive);
+
+    //Generate snake head
     let point = new Point(tileSize*10, tileSize*10);
     snakeHead = new Path.Circle(point, tileSize/2);
     snakeHead.fillColor = '#ffffff';
 
-    generateRandomApples(10);
+    //Generate apples
+    generateRandomApples(startingApples);
 
-
+    //Set pace of game
     gameActive = setInterval(function(){ 
         moveSnake(); 
     }, gameSpeed);
@@ -51,8 +78,8 @@ function startGame() {
 
 function generateRandomApples(num) {
     for (let i = 0; i < num; i++) {
-        let randomX = tileSize * Math.floor(Math.random()*Math.floor(canvasWidth / tileSize));
-        let randomY = tileSize * Math.floor(Math.random()*Math.floor(canvasHeight / tileSize));
+        let randomX = tileSize * Math.floor(Math.random()*Math.floor(canvasWidth / tileSize)) + tileSize;
+        let randomY = tileSize * Math.floor(Math.random()*Math.floor(canvasHeight / tileSize)) + tileSize;
         console.log(randomX, randomY);
         let point = new Point(randomX, randomY);
         let apple = new Path.Circle(point, tileSize/2);
@@ -103,6 +130,12 @@ function checkCollision() {
             apples.splice(i,1);
             generateRandomApples(1);
 
+            //Play audio
+            appleSound.play();
+
+            //Add to score
+            incrementScore();
+            
             //Add to snake length;
             let point;
             if (snakeBody.length > 0) {
@@ -133,13 +166,59 @@ function checkCollision() {
     }
 }
 
+function incrementScore() {
+    score++;
+    document.getElementById('score').innerHTML = "Score <strong class='score'>"+score+"</strong>";
+    if (score >= 10 && score < 20) {
+        gameSpeed = 60;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 20 && score < 30) {
+        gameSpeed = 50;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 30 && score < 40) {
+        gameSpeed = 40;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 40 && score < 50) {
+        gameSpeed = 30;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+    else if (score >= 50 && score < 60) {
+        gameSpeed = 20;
+        clearInterval(gameActive);
+        gameActive = setInterval(function(){ 
+            moveSnake(); 
+        }, gameSpeed);
+    }
+}
+
 function gameOver() {
+    //Play audio
+    gameoverSound.play();
+
     clearInterval(gameActive);
             
     snakeHead.fillColor = '#af2323';
     for (let i = 0; i < snakeBody.length; i++) {
         snakeBody[i].fillColor = '#af2323';
     }
+
+    document.getElementById('gameoverPanel').classList.toggle('active');
+    document.getElementById('gameoverScore').innerHTML = "Score <strong class='score'>"+score+"</strong></h3>"
 }
 
 function pressedKey() {
@@ -165,8 +244,6 @@ function changeDirection() {
             //move "up" only when previous direction is not "down"
             if (previousDir !== "Down") {
                 direction=directionVar;
-                // xSpeed = 0;
-                // ySpeed = scale * -speed;
             } 
             break;
 
@@ -174,8 +251,6 @@ function changeDirection() {
             //move "down" only when previous direction is not "up"
             if (previousDir !== "Up") {
                 direction=directionVar;
-                // xSpeed = 0;
-                // ySpeed = scale * speed;
             } 
             break;
 
@@ -183,8 +258,6 @@ function changeDirection() {
             //move "left" only when previous direction is not "right"
             if (previousDir !== "Right") {
                 direction=directionVar;
-                // xSpeed = scale * -speed;
-                // ySpeed = 0;
             } 
             break;
 
@@ -192,10 +265,53 @@ function changeDirection() {
             //move "right" only when previous direction is not "left"
             if (previousDir !== "Left") {
                 direction=directionVar;
-                // xSpeed = scale * speed;
-                // ySpeed = 0;
             } 
             break;
     }
 }
+
+//Toggle audio on/off
+function toggleAudio(tile) {
+    if (document.getElementById(tile).className === 'audioToggle') {
+        document.getElementById(tile).className = 'audioToggle off';
+    }
+    else {
+        document.getElementById(tile).className = 'audioToggle';
+    }
+}
+
+function togglePanel(panel) {
+    document.getElementById('chatPanel').className = '';
+    document.getElementById('settingsPanel').className = '';
+    document.getElementById('chatThread').className = '';
+    if (document.getElementById('panel').className === 'active') {
+        document.getElementById('panel').className = '';
+        document.getElementById(panel+'Panel').style.display = 'none';
+        if (panel === 'chat') {
+            document.getElementById('chatThread').className = '';
+        }
+    }
+    else {
+        document.getElementById('panel').className = 'active';
+        document.getElementById(panel+'Panel').style.display = 'block';
+    }
+}
+
+function toggleInformation(tool) {
+    if (document.getElementById(tool).className === 'active') {
+        document.getElementById(tool).className = '';
+    }
+    else {
+        document.getElementById(tool).className = 'active';
+    }
+
+    //Turn off own video
+    if (document.getElementById('videoToggle').className === 'active') {
+        document.getElementById('yourStream').className = 'active';
+    }
+    else {
+        document.getElementById('yourStream').className = '';
+    }
+}
+
 

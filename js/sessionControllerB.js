@@ -26,6 +26,13 @@ let studentList = [
 
 //Generate tiles on page load
 window.onload = (event) => {
+    
+    //Notification
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
+
     let tileList = document.getElementById('tileList');
 
     for (i = 1; i < studentList.length + 1; i++) {
@@ -121,11 +128,6 @@ window.onload = (event) => {
     //Someone random raising their hand
     let random = Math.floor(Math.random()*9) + 2;
     document.getElementById('handTile'+random).classList.toggle('active');
-
-    document.getElementById('notification').classList.toggle('active');
-    setTimeout( function() {
-        document.getElementById('notification').classList.toggle('active');
-    }, 3000);
 
     //Someone random chatting
     for (let i = 0; i < 3; i++) {
