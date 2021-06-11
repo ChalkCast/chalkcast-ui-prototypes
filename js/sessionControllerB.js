@@ -28,10 +28,7 @@ let studentList = [
 window.onload = (event) => {
     
     //Notification
-    document.getElementById('notification').classList.toggle('active');
-    setTimeout( function() {
-        document.getElementById('notification').classList.toggle('active');
-    }, 3000);
+    toggleNotification();
 
     let tileList = document.getElementById('tileList');
 
@@ -433,4 +430,34 @@ function chatFilter(filter) {
     document.getElementById('questionsFilter').className = '';
     document.getElementById('linksFilter').className = '';
     document.getElementById(filter+'Filter').classList.toggle('active');
+}
+
+function toggleNotification(notification) {
+    if (notification) {
+        document.getElementById('notification').innerHTML = notification;
+    }
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
+}
+
+function toggleSwitch(id) {
+    document.getElementById('switch'+id).classList.toggle('on');
+}
+
+function toggleRoomLock(state) {
+    document.getElementById('unlockedRoom').className = '';  
+    document.getElementById('lockedRoom').className = '';
+    document.getElementById(state+'Room').className = 'active';
+    if (state === 'unlocked') {
+        document.getElementById('lockedCaption').innerHTML = "Anyone with the link can join";
+    }
+    else {
+        document.getElementById('lockedCaption').innerHTML = "Guests must be approved to join";
+    }
+}
+
+function toggleSmallPanel() {
+    document.getElementById('smallPanel').classList.toggle('active');  
 }

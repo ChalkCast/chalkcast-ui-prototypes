@@ -56,6 +56,15 @@
           <div class="button" onclick="toggleNudgePanel()">Send</div>
         </div>
       </div>
+
+      <div id="smallPanel" class="active">
+        <h4 class="title" id="smallPanelTitle">Removing participant</h4>
+        <div class="exit" onclick="toggleSmallPanel('remove')"></div>
+        <div class="nudgeSection">
+        <p>This participant will not be allowed back in this session.</p>
+          <div class="button boot" onclick="toggleSmallPanel('remove')">Remove</div>
+        </div>
+      </div>
       
       <div id="panel">
           <div id="chatPanel" style="display: none">
@@ -71,30 +80,43 @@
             <h4 class="title">Settings</h4>
             <div class="panelSection">
               <h5>Room Link</h5>
-              <div class="button linkButton">Copy Link</div>
+              <div class="button linkButton" onclick="toggleNotification('<h4>Room link copied to clipboard</h4>')">Copy Link</div>
             </div>
             <div class="panelSection">
               <h5>Lock Room</h5>
               <div class="lockToggle">
-                <div id="unlockedRoom" class="active">Unlocked</div><div id="lockedRoom">Locked</div>
+                <div id="unlockedRoom" class="active" onclick="toggleRoomLock('unlocked')">Unlocked</div><div id="lockedRoom" onclick="toggleRoomLock('locked')">Locked</div>
               </div>
-              <div class="caption">Anyone with the link can join</div>
+              <div id="lockedCaption" class="caption">Anyone with the link can join</div>
             </div>
             <div class="panelSection">
               <h5>Participant Features</h5>
-              <div class="feature">Screen Share</div><div class="switch on"></div>
-              <div class="feature">Chat with Everyone</div><div class="switch on"></div>
-              <div class="feature">Direct Message Chat</div><div class="switch on"></div>
+              <div class="feature">Screen Share</div><div id="switch1" class="switch on" onclick="toggleSwitch('1')"></div>
+              <div class="feature">Chat with Everyone</div><div id="switch2" class="switch on" onclick="toggleSwitch('2')"></div>
+              <div class="feature">Direct Message Chat</div><div id="switch3" class="switch on" onclick="toggleSwitch('3')"></div>
               <div class="clear-0"></div>
             </div>
             <div class="panelSection">
               <h5>Preferences</h5>
-              <div class="feature">Upon entry, mic is OFF</div><div class="switch off"></div>
-              <div class="feature">Upon entry, camera is OFF</div><div class="switch off"></div>
+              <div class="feature">Upon entry, mic is OFF</div><div id="switch4" class="switch" onclick="toggleSwitch('4')"></div>
+              <div class="feature">Upon entry, camera is OFF</div><div id="switch5" class="switch" onclick="toggleSwitch('5')"></div>
               <div class="clear-0"></div>
               <p>Microphone</p>
+              <select name="mic" id="mic">
+                <option value="mic1">Microphone 1</option>
+                <option value="mic2">Microphone 2</option>
+              </select>
               <p>Audio Output</p>
+              <select name="audio" id="audio">
+                <option value="sepakers1">Speaker 1</option>
+                <option value="speakers2">Speaker 2</option>
+              </select>
               <p>Video Source</p>
+              <select name="video" id="video">
+                <option value="video1">Webcam 1</option>
+                <option value="video2">Webcam 2</option>
+              </select>
+              <div class="yourStreamSettings"></div>
             </div>
           </div>
       </div>
@@ -102,7 +124,7 @@
       <div id="chatThread" style="display: block">
         <h4 class="title" id="threadName">Phil Mok</h4>
         <div class="back" onclick="toggleThread('exit')"></div>
-        <div class="button boot">Remove</div>
+        <div class="button boot" onclick="toggleSmallPanel('remove')">Remove</div>
         <ul class="chatFilter">
           <li id="allFilter" onclick="chatFilter('all')" class="active">All</li><li id="questionsFilter" onclick="chatFilter('questions')">Questions</li><li id="linksFilter" onclick="chatFilter('links')">Links</li>
         </ul>
