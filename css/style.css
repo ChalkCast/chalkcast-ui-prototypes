@@ -1081,8 +1081,17 @@ nav .button-collapse {
 }
 
 .chalkboard {
-
+  background-color: rgba(2, 17, 15, 0.95);
+  background-image: url(../images/chalkboard-templates/largeGrid.png);
 }
+
+.sheetMusic {
+  background-image: url(../images/chalkboard-templates/sheetMusic.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 
 .whiteboard {
   background-color: rgba(255, 255, 255, 0.95);
@@ -1412,7 +1421,7 @@ nav .button-collapse {
 .darkbody {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(rgba(11,66,53,1) 0%, rgba(0,0,0,1) 100%);
+  background: radial-gradient(rgb(11, 66, 61) 0%, rgba(0,0,0,1) 100%);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -1975,7 +1984,7 @@ nav .button-collapse {
   line-height: 60px;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
-  background-color: #4367AB80;
+  background-color: #4367abab;
   backdrop-filter: blur(30px);
   padding: 0 20px;
   width: 500px;
@@ -2222,6 +2231,16 @@ nav .button-collapse {
     left: unset;
     right: 12px;
     bottom: 10px;
+  }
+
+  #snakeCanvas {
+    width: calc(100vw - 24px);
+    height: calc(100vh - 92px);
+    left: 12px;
+  }
+
+  #gameoverPanel {
+    left: calc(50% - 150px);
   }
 }
 
