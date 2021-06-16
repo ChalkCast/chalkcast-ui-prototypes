@@ -64,6 +64,7 @@ input:focus-visible {
 }
 
 select {
+  display: block;
   background-color: rgba(0,0,0,0.6);
   color: #ddd;
   border: 0px solid;
@@ -1082,7 +1083,26 @@ nav .button-collapse {
 
 .chalkboard {
   background-color: rgba(2, 17, 15, 0.95);
+}
+
+.gridSmall {
+  background-image: url(../images/chalkboard-templates/smallGrid.png);
+}
+
+.gridLarge {
   background-image: url(../images/chalkboard-templates/largeGrid.png);
+}
+
+.dotsSmall {
+  background-image: url(../images/chalkboard-templates/smallDots.png);
+}
+
+.dotsLarge {
+  background-image: url(../images/chalkboard-templates/largeDots.png);
+}
+
+.lines {
+  background-image: url(../images/chalkboard-templates/notebookLines.png);
 }
 
 .sheetMusic {
@@ -1090,6 +1110,22 @@ nav .button-collapse {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.tabGuitar {
+  background-image: url(../images/chalkboard-templates/TabGuitar.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#templateSelect {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 99999;
+  width: 160px;
+  height: 44px;
 }
 
 
@@ -1203,12 +1239,22 @@ nav .button-collapse {
   opacity: 0.6;
 }
 
+.tile.empty {
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 24px;
+  transition-duration: 0.6s;
+}
+
+.tile.empty:hover {
+  opacity: 0.4;
+  transition-duration: 0.6s;
+}
+
 .tile.expanded {
   order: 0;
   width: 100%;
   height: 90vh;
   transition-duration: 1s;
-  
 }
 
 .tile.expanded:hover {

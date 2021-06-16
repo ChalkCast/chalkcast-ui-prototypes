@@ -138,3 +138,8 @@ function toggleEraser() {
     document.getElementById('eraser').className = "active";
     eraser.activate();
 }
+
+function changeTemplate() {
+    template = document.getElementById("templateSelect").value;
+    document.getElementById('chalkboard').className = 'chalkboard '+template; 
+}

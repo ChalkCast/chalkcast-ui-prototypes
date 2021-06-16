@@ -26,89 +26,50 @@ let studentList = [
 
 //Generate tiles on page load
 window.onload = (event) => {
+    
+    //Notification
+    //toggleNotification();
+    document.getElementById('notification').classList.toggle('active');
+
     let tileList = document.getElementById('tileList');
 
     for (i = 1; i < studentList.length + 1; i++) {
         let num = i.toString();
+        let student = studentList[i-1];
 
         let tile = document.createElement('li');
         tile.id = "tile"+num;
-        tile.className = "tile";
-        tile.onmouseover = function() {
-            toggleNudge("nudgeTile"+num);
-        }
-        tile.onmouseout = function() {
-            toggleNudge("nudgeTile"+num);
-        }
+        tile.className = "tile empty";
 
-        let tileImage = document.createElement('div');
-        tileImage.className = "tileImage";
-        tileImage.id = "tileImage"+num;
-        tileImage.style.backgroundImage = "url('./images/people/"+i+".jpg')"; 
-        //tileImage.style.backgroundImage = "url('./images/people/anonymous.jpg')";
-        tileImage.onclick = function() {
-            expand("tile"+num);
-        }
-        tile.appendChild(tileImage);
-
-        // let nudgeTile = document.createElement('div');
-        // nudgeTile.className = "nudgeTile";
-        // nudgeTile.id = "nudgeTile"+num;
-
-        let fullscreen = document.createElement('div');
-        fullscreen.className = "fullscreen";
-        fullscreen.id = "fullscreen"+num;
-        fullscreen.onclick = function() {
-            toggleFullscreen();
-        }
-
-        let handTile = document.createElement('div');
-        handTile.className = "handTile";
-        handTile.id = "handTile"+num;
-        handTile.onclick = function() {
-            this.classList.toggle('active');
-        }
-        
-        let name = document.createElement('div');
-        name.className = "name";
-        name.id = "name"+num;
-        name.textContent = studentList[i-1];
-        
-        // let videoToggle = document.createElement('div');
-        // videoToggle.className = "videoToggle"
-        // videoToggle.id = "video"+num;
-        // videoToggle.onclick = function() {
-        //     toggleVideo(videoToggle.id, tileImage.id, name.id);
-        // }
-
-        let audioToggle = document.createElement('div');
-        audioToggle.className = "audioToggle"
-        audioToggle.id = "audio"+num.toString();;
-        audioToggle.onclick = function() {
-            toggleAudio('audio'+num)
-        }
-        // name.appendChild(videoToggle);
-        name.appendChild(audioToggle);
-        tile.appendChild(handTile);
-        // tile.appendChild(nudgeTile);
-        tile.appendChild(fullscreen);
-        tile.appendChild(name);
         tileList.appendChild(tile);
 
         let chatList = document.getElementById('chatList');       
         let chat = document.createElement('li');
-        chat.className = "indicator-active";
+        if (i < 16) {
+            chat.className = "active";
+        }
+        else {
+            chat.className = "inactive";
+        }
         chat.textContent = studentList[i-1];
         let studentName = studentList[i-1];
-        chat.onclick = function() {
-            toggleThread(studentName);
-        }
+        let newMessage = document.createElement('div');
+        newMessage.className = 'newMessage';
+        newMessage.id = 'newMessage'+num;
+        chat.appendChild(newMessage);
         chatList.appendChild(chat);
     }
 
     //Someone random raising their hand
     let random = Math.floor(Math.random()*9) + 2;
     document.getElementById('handTile'+random).classList.toggle('active');
+
+    //Someone random chatting
+    for (let i = 0; i < 3; i++) {
+        let random = Math.floor(Math.random()*9) + 2;
+        document.getElementById('newMessage'+random).classList.toggle('active');
+        document.getElementById('newMessage'+random).textContent = "1";
+    }
 };
 
 //Toggle video on/off
@@ -132,6 +93,13 @@ function toggleVideo(tile, tileImage, name) {
         document.getElementById(name).className = "name";
     }
 }
+
+function toggleNudgePanel(student) {
+    document.getElementById('nudgePanel').classList.toggle('active');
+    if (student) {
+        document.getElementById('nudgeTitle').innerHTML = "Nudge <strong>"+student+"</strong>";
+    }
+};
 
 //Toggle audio on/off
 function toggleAudio(tile) {
@@ -297,19 +265,19 @@ function toggleInformation(tool) {
 }
 
 function togglePanel(panel) {
+    document.getElementById('chatPanel').className = '';
+    document.getElementById('settingsPanel').className = '';
+    document.getElementById('chatThread').className = '';
     if (document.getElementById('panel').className === 'active') {
         document.getElementById('panel').className = '';
-        document.getElementById('panel-'+panel).style.display = 'none';
-        document.getElementById(panel).className = '';
-        //Chat specific
+        document.getElementById(panel+'Panel').style.display = 'none';
         if (panel === 'chat') {
-        document.getElementById('chatThread').className = '';
+            document.getElementById('chatThread').className = '';
         }
     }
     else {
         document.getElementById('panel').className = 'active';
-        document.getElementById('panel-'+panel).style.display = 'block';
-        document.getElementById(panel).className = 'active';
+        document.getElementById(panel+'Panel').style.display = 'block';
     }
 }
 
@@ -393,4 +361,41 @@ function toggleFullscreen() {
         document.getElementById('fullscreen'+expandedTile).className = 'fullscreen active';
         document.getElementById('nextButton').className = 'active';
     }
+}
+
+function chatFilter(filter) {
+    document.getElementById('allFilter').className = '';
+    document.getElementById('questionsFilter').className = '';
+    document.getElementById('linksFilter').className = '';
+    document.getElementById(filter+'Filter').classList.toggle('active');
+}
+
+function toggleNotification(notification) {
+    if (notification) {
+        document.getElementById('notification').innerHTML = notification;
+    }
+    document.getElementById('notification').classList.toggle('active');
+    setTimeout( function() {
+        document.getElementById('notification').classList.toggle('active');
+    }, 3000);
+}
+
+function toggleSwitch(id) {
+    document.getElementById('switch'+id).classList.toggle('on');
+}
+
+function toggleRoomLock(state) {
+    document.getElementById('unlockedRoom').className = '';  
+    document.getElementById('lockedRoom').className = '';
+    document.getElementById(state+'Room').className = 'active';
+    if (state === 'unlocked') {
+        document.getElementById('lockedCaption').innerHTML = "Anyone with the link can join";
+    }
+    else {
+        document.getElementById('lockedCaption').innerHTML = "Guests must be approved to join";
+    }
+}
+
+function toggleSmallPanel() {
+    document.getElementById('smallPanel').classList.toggle('active');  
 }

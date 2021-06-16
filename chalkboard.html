@@ -17,7 +17,17 @@
 
   <body>
     <canvas id="chalkboard" class="chalkboard" hidpi="off" resize></canvas>
-    <div id="toggleBackground" onclick="toggleBackground()">Switch to Chalkboard</div>
+    <!-- <div id="toggleBackground" onclick="toggleBackground()">Switch to Chalkboard</div> -->
+      <select name="template" id="templateSelect" onchange="changeTemplate(event)" >
+        <option value="">Template</option>
+        <option value="gridSmall">Grid (small)</option>
+        <option value="gridLarge">Grid (large)</option>
+        <option value="dotsSmall">Dots (small)</option>
+        <option value="dotsLarge">Dots (large)</option>
+        <option value="lines">Lines</option>
+        <option value="sheetMusic">Sheet Music</option>
+        <option value="tabGuitar">Guitar Tab</option>
+      </select>
     <div class="exit"></div>
 
     <ul id="toolbar">
