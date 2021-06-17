@@ -434,7 +434,7 @@ function chatFilter(filter) {
 
 function toggleNotification(notification) {
     if (notification) {
-        document.getElementById('notification').innerHTML = notification;
+        document.getElementById('notification').innerHTML = "<h4>"+notification+"</h4>";
     }
     document.getElementById('notification').classList.toggle('active');
     setTimeout( function() {
@@ -460,4 +460,20 @@ function toggleRoomLock(state) {
 
 function toggleSmallPanel() {
     document.getElementById('smallPanel').classList.toggle('active');  
+}
+
+function removeGuest() {
+    guest = document.getElementById('threadName').textContent;
+    toggleThread('exit');
+    console.log(guest);
+
+    chatList = document.getElementById('chatList');
+    for (let i = 0; i < chatList.children.length; i++) {
+        if (chatList.children[i].textContent === guest) {
+            chatList.children[i].remove();
+        }
+    }
+
+    toggleNotification(guest+' has been removed from the room. The room is now locked and guests must knock to join.')
+
 }

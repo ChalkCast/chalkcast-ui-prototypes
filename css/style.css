@@ -2033,7 +2033,8 @@ nav .button-collapse {
   background-color: #4367abab;
   backdrop-filter: blur(30px);
   padding: 0 20px;
-  width: 500px;
+  min-width: 500px;
+  max-width: 80vw;
   text-align: center;
   height: 0;
   transition-duration: 0.5s;
