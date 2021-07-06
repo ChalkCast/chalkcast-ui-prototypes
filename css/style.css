@@ -1078,7 +1078,7 @@ nav .button-collapse {
   width: 100vw;
   height: 100vh;
   cursor: crosshair;
-  transition-duration: 1s;
+  transition-duration: 0.3s;
 }
 
 .chalkboard {
@@ -1114,6 +1114,20 @@ nav .button-collapse {
 
 .tabGuitar {
   background-image: url(../images/chalkboard-templates/TabGuitar.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.worldMap {
+  background-image: url(../images/chalkboard-templates/worldMap.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.usMap {
+  background-image: url(../images/chalkboard-templates/usMap.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
