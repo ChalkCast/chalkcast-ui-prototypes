@@ -1228,11 +1228,11 @@ nav .button-collapse {
   background-size: cover;
   background-position: 50% 50%;
   transition-duration: 1s;
-  cursor: url('../images/icons/expandCursor.png'), auto;
+  cursor: url('../images/icons/expandCursor.svg') 16 16, pointer;
 }
 
 .tileImage.expanded {
-  cursor: url('../images/icons/contractCursor.png'), auto;
+  cursor: url('../images/icons/contractCursor.svg') 16 16, pointer;
 }
 
 .tileImage:hover {
