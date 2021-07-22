@@ -143,6 +143,7 @@ function toggleEraser() {
         toolbar.children[i].className = "";
     }
     document.getElementById('eraser').className = "active";
+    document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorEraser.svg') 0 32, pointer";
     eraser.activate();
 }
 
