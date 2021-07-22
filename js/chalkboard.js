@@ -108,25 +108,32 @@ function changeColor(color) {
     if (color === 'mainColor') {
         if (chalkboard.className === "chalkboard") {
             strokeColor = 'white';
+            document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursor.svg') 0 32, pointer";
         }
         else {
             strokeColor = 'black';
+            document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursor.svg') 0 32, pointer";
         }
     }
     else if (color === 'red') {
         strokeColor = '#df5959'; 
+        document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorRed.svg') 0 32, pointer";
     }
     else if (color === 'blue') {
         strokeColor = '#678fe0'; 
+        document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorBlue.svg') 0 32, pointer";
     }
     else if (color === 'green') {
-        strokeColor = '#86d0ca'; 
+        strokeColor = '#86d0ca';
+        document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorGreen.svg') 0 32, pointer"; 
     }
     else if (color === 'purple') {
         strokeColor = '#9e7ad9'; 
+        document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorPurple.svg') 0 32, pointer";
     }
     else if (color === 'orange') {
         strokeColor = '#d69e54'; 
+        document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorOrange.svg') 0 32, pointer";
     }
 }
 

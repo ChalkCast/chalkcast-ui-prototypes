@@ -1077,7 +1077,7 @@ nav .button-collapse {
 #chalkboard {
   width: 100vw;
   height: 100vh;
-  cursor: crosshair;
+  cursor: url('../images/icons/sketchCursor.svg') 16 16, pointer;
   transition-duration: 0.3s;
 }
 

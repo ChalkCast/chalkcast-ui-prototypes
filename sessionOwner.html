@@ -35,8 +35,8 @@
           <!-- <li id="raisehand" onclick="toggleRaisedHand()"></li> -->
           <li id="chat" onclick="togglePanel('chat')"><div id="newChatIndicator">3</div></li>
           <li id="groups"></li>
-          <!-- <li id="chalk" onclick="toggleChalkboard()"></li>
-          <li id="quiz" onclick="togglePanel('quiz')"></li> -->
+          <li id="chalk" onclick="toggleChalkboard()"></li>
+          <!--<li id="quiz" onclick="togglePanel('quiz')"></li> -->
           <li id="settings" onclick="togglePanel('settings')"></li>
           
         </ul>
@@ -150,7 +150,20 @@
       </div>
 
       <div id="chalkboardContainer">
+
         <canvas id="chalkboard" class="chalkboard" hidpi="off" resize>     </canvas>
+        <select name="template" id="templateSelect" onchange="changeTemplate(event)" >
+          <option value="">Template</option>
+          <option value="gridSmall">Grid (small)</option>
+          <option value="gridLarge">Grid (large)</option>
+          <option value="dotsSmall">Dots (small)</option>
+          <option value="dotsLarge">Dots (large)</option>
+          <option value="lines">Lines</option>
+          <option value="worldMap">World Map</option>
+          <option value="usMap">US Map</option>
+          <option value="sheetMusic">Sheet Music</option>
+          <option value="tabGuitar">Guitar Tab</option>
+        </select>
         <div class="exit" onclick="toggleChalkboard()"></div>
         <ul id="toolbar">
           <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
