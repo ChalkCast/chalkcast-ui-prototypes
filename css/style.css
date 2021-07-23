@@ -229,14 +229,14 @@ body {
 body::-webkit-scrollbar {
   background-color: rgba(0,0,0,0.2);
   height: 0px;
-  width: 4px;
+  width: 0px;
   border-radius: 2px;
 }
 
 body::-webkit-scrollbar-thumb {
   background-color: rgba(255,255,255,0.3);
   height: 0px;
-  width: 4px;
+  width: 0px;
   border-radius: 2px;
 }
 
@@ -1075,63 +1075,137 @@ nav .button-collapse {
 }
 
 #chalkboard {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   cursor: url('../images/icons/sketchCursor.svg') 0 32, pointer;
   transition-duration: 0.3s;
 }
 
 .chalkboard {
-  background-color: rgba(2, 17, 15, 0.95);
+  
 }
 
-.gridSmall {
+.gridSmall, #gridSmall {
   background-image: url(../images/chalkboard-templates/smallGrid.png);
 }
 
-.gridLarge {
+.gridLarge, #gridLarge {
   background-image: url(../images/chalkboard-templates/largeGrid.png);
 }
 
-.dotsSmall {
+.dotsSmall, #dotsSmall {
   background-image: url(../images/chalkboard-templates/smallDots.png);
 }
 
-.dotsLarge {
+.dotsLarge, #dotsLarge {
   background-image: url(../images/chalkboard-templates/largeDots.png);
 }
 
-.lines {
+.lines, #lines {
   background-image: url(../images/chalkboard-templates/notebookLines.png);
 }
 
-.sheetMusic {
+.sheetMusic, #sheetMusic {
   background-image: url(../images/chalkboard-templates/sheetMusic.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.tabGuitar {
+.tabGuitar, #tabGuitar {
   background-image: url(../images/chalkboard-templates/TabGuitar.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.worldMap {
+.worldMap, #worldMap {
   background-image: url(../images/chalkboard-templates/worldMap.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.usMap {
+.usMap, #usMap {
   background-image: url(../images/chalkboard-templates/usMap.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
+
+#templateToggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 8;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/grid.svg');
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#templateMenu {
+  position: fixed;
+  top: 12px;
+  left: 68px;
+  z-index: -1;
+  opacity: 0;
+  width: 380px;
+  height: 200px;
+  background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(30px);
+  border-radius: 28px;
+}
+
+#templateMenu.active {
+  z-index: 9;
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
+.templateCategory {
+  float: left;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.templateCategory li{
+  height: 50px;
+  width: 120px;
+  padding: 0 20px;
+  line-height: 50px;
+  font-size: 1.8rem;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.templateCategory li.active{
+  border-right: 2px solid #fff;
+  opacity: 1;
+}
+
+.templateContainer {
+  float: right;
+  width: 200px;
+  height: 200px;
+}
+
+.templatesList {
+  padding: 20 8px;
+}
+
+.templatesList li {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-right: 8px;
+  background-size: 40%;
+  cursor: pointer;
+}
+
 
 #templateSelect {
   position: fixed;
@@ -1220,7 +1294,7 @@ nav .button-collapse {
 
 #eraser {
   background-color: rgba(0,0,0,0.4);
-  background-image: url('../images/icons/eraser.svg');
+  background-image: url('../images/icons/sketchCursorEraser.svg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
@@ -1233,7 +1307,7 @@ nav .button-collapse {
   margin: 0 0.1% 0.1% 0;
   display: inline-block;
   position: relative;
-  transition-duration: 1s;
+  transition-duration: 0.3s;
 }
 
 .tileImage {
@@ -1241,7 +1315,7 @@ nav .button-collapse {
   height: 100%;
   background-size: cover;
   background-position: 50% 50%;
-  transition-duration: 1s;
+  transition-duration: 0.3s;
   cursor: url('../images/icons/expandCursor.svg') 16 16, pointer;
 }
 
@@ -1928,21 +2002,23 @@ nav .button-collapse {
 
 #chalkboardContainer {
   position: fixed;
-  top: 2vh;
-  left: 90px;
+  top: 12px;
+  left: 10px;
   width: 0px;
-  height: 96vh;
+  height: calc(100vh - 24px);
   z-index: 4;
   border-radius: 24px;
   background-color: rgba(2, 17, 15, 0.95);
   backdrop-filter: blur(20px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition-duration: 1s;
+  transition-duration: 0.3s;
   overflow: hidden;
+
+  
 }
 
 #chalkboardContainer.active {
-  width: calc(100vw - 120px);
+  width: calc(80% - 16px);
 }
 
 /* Raised Hand */

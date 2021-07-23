@@ -106,7 +106,7 @@ function changeColor(color) {
     //Change color
     document.getElementById(color).className = "active";
     if (color === 'mainColor') {
-        if (chalkboard.className === "chalkboard") {
+        if (chalkboard.classList.contains('chalkboard')) {
             strokeColor = 'white';
             document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursor.svg') 0 32, pointer";
         }
@@ -150,4 +150,23 @@ function toggleEraser() {
 function changeTemplate() {
     template = document.getElementById("templateSelect").value;
     document.getElementById('chalkboard').className = 'chalkboard '+template; 
+}
+
+function toggleTemplate(template) {
+    document.getElementById('chalkboard').className = 'chalkboard '+template; 
+}
+
+function toggleTemplateMenu() {
+    document.getElementById('templateMenu').classList.toggle('active');
+}
+
+function toggleTemplateCategory(category) {
+    let categories = ['Math', 'Language', 'Geography', 'Music'];
+    for (let i = 0; i < categories.length; i++) {
+        document.getElementById(categories[i]+'Category').className = '';
+        document.getElementById(categories[i]).style.display = 'none';
+    }
+    
+    document.getElementById(category+'Category').className = 'active' 
+    document.getElementById(category).style.display = 'block';
 }

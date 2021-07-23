@@ -28,7 +28,7 @@ let studentList = [
 window.onload = (event) => {
     
     //Notification
-    toggleNotification();
+    //toggleNotification();
 
     let tileList = document.getElementById('tileList');
 
@@ -132,6 +132,9 @@ window.onload = (event) => {
         document.getElementById('newMessage'+random).classList.toggle('active');
         document.getElementById('newMessage'+random).textContent = "1";
     }
+
+     //Chalkboard
+     toggleChalkboard();
 };
 
 //Toggle video on/off
@@ -347,10 +350,34 @@ function toggleChalkboard() {
     if (document.getElementById('chalkboardContainer').className === 'active') {
         document.getElementById('chalkboardContainer').className = '';
         document.getElementById('chalk').className = '';
+        
+        //Activate expanded div
+        document.getElementById('expandedTile').className = "";
+        document.getElementById('tileList').className = "streamContainer";
+
+        //Make other tiles full width
+        let ul = document.getElementById("tileList");
+        let items = ul.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.width = '';
+        }
+
     }
     else {
         document.getElementById('chalkboardContainer').className = 'active';
         document.getElementById('chalk').className = 'active';
+
+        //Activate expanded div
+        document.getElementById('expandedTile').className = "active";
+        document.getElementById('tileList').className = "expanded streamContainer";
+
+        //Make other tiles full width
+        let ul = document.getElementById("tileList");
+        let items = ul.getElementsByTagName("li");
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.width = '100%';
+        }
+
     if (!chalkActivated) {
         setTimeout( function() {
         initializePaper();

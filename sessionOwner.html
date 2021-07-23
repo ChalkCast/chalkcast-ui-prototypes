@@ -152,8 +152,35 @@
       <div id="chalkboardContainer">
 
         <canvas id="chalkboard" class="chalkboard" hidpi="off" resize>     </canvas>
-        <select name="template" id="templateSelect" onchange="changeTemplate(event)" >
-          <option value="">Template</option>
+        <div id="templateToggle" onclick="toggleTemplateMenu()"></div>
+        <div id="templateMenu">
+          <ul class="templateCategory">
+            <li id="MathCategory" class="active" onclick="toggleTemplateCategory('Math')">Math</li>
+            <li id="LanguageCategory" onclick="toggleTemplateCategory('Language')">Language</li>
+            <li id="GeographyCategory" onclick="toggleTemplateCategory('Geography')">Geography</li>
+            <li id="MusicCategory" onclick="toggleTemplateCategory('Music')">Music</li>
+          </ul>
+          <div class="templateContainer">
+            <ul class="templatesList" id="Math" style="display: block">
+              <li id="gridSmall" onclick="toggleTemplate('gridSmall')"></li>
+              <li id="gridLarge" onclick="toggleTemplate('gridLarge')"></li>
+              <li id="dotsSmall" onclick="toggleTemplate('dotsSmall')"></li>
+              <li id="dotsLarge" onclick="toggleTemplate('dotsLarge')"></li>
+            </ul>
+            <ul class="templatesList" id="Language" style="display: none">
+              <li id="lines" onclick="toggleTemplate('lines')"></li>
+            </ul>
+            <ul class="templatesList" id="Geography" style="display: none">
+              <li id="worldMap" onclick="toggleTemplate('worldMap')"></li>
+              <li id="usMap" onclick="toggleTemplate('usMap')"></li>
+            </ul>
+            <ul class="templatesList Music" id="Music" style="display: none">
+              <li id="sheetMusic" onclick="toggleTemplate('sheetMusic')"></li>
+              <li id="tabGuitar" onclick="toggleTemplate('tabGuitar')"></li>
+            </ul>
+          </div>
+        </div>
+          <!-- <option value="">Template</option>
           <option value="gridSmall">Grid (small)</option>
           <option value="gridLarge">Grid (large)</option>
           <option value="dotsSmall">Dots (small)</option>
@@ -162,8 +189,8 @@
           <option value="worldMap">World Map</option>
           <option value="usMap">US Map</option>
           <option value="sheetMusic">Sheet Music</option>
-          <option value="tabGuitar">Guitar Tab</option>
-        </select>
+          <option value="tabGuitar">Guitar Tab</option> -->
+        
         <div class="exit" onclick="toggleChalkboard()"></div>
         <ul id="toolbar">
           <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
