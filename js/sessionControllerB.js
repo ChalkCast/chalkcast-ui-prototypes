@@ -134,7 +134,7 @@ window.onload = (event) => {
     }
 
      //Chalkboard
-     toggleChalkboard();
+     //toggleChalkboard();
 };
 
 //Toggle video on/off

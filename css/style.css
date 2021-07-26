@@ -1168,6 +1168,8 @@ nav .button-collapse {
 .templateCategory {
   float: left;
   background-color: rgba(0, 0, 0, 0.4);
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
 }
 
 .templateCategory li{
@@ -1204,6 +1206,10 @@ nav .button-collapse {
   margin-right: 8px;
   background-size: 40%;
   cursor: pointer;
+}
+
+.templatesList li.active {
+  border: 1px solid #fff;
 }
 
 
@@ -1251,7 +1257,7 @@ nav .button-collapse {
   padding: 0;
   position: fixed;
   top: 100px;
-  left: 20px;
+  left: 12px;
 }
 
 #toolbar li {
@@ -1295,6 +1301,13 @@ nav .button-collapse {
 #eraser {
   background-color: rgba(0,0,0,0.4);
   background-image: url('../images/icons/sketchCursorEraser.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#text {
+  background-color: rgba(0,0,0,0.4);
+  background-image: url('../images/icons/text.svg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }

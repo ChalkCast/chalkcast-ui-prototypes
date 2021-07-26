@@ -153,7 +153,20 @@ function changeTemplate() {
 }
 
 function toggleTemplate(template) {
-    document.getElementById('chalkboard').className = 'chalkboard '+template; 
+    //Reset templates
+    if (document.getElementById(template).className === 'active') {
+        document.getElementById('chalkboard').className = 'chalkboard';
+        document.getElementById(template).className = '';
+    }
+    else {
+        let templates = ['gridSmall','gridLarge','dotsSmall','dotsLarge', 'lines','worldMap','usMap', 'sheetMusic','tabGuitar'];
+        for (let i = 0; i < templates.length; i++) {
+            document.getElementById(templates[i]).className = '';
+        }
+        
+        document.getElementById('chalkboard').className = 'chalkboard '+template;
+        document.getElementById(template).classList.toggle('active');
+    }
 }
 
 function toggleTemplateMenu() {
