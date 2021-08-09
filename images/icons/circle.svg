@@ -6,7 +6,7 @@
 	.st0{display:none;}
 	.st1{display:inline;fill:#050505;stroke:#000000;stroke-width:0.4444;stroke-miterlimit:4.4444;}
 	.st2{display:inline;fill:none;stroke:#FFFFFF;stroke-width:0.8889;stroke-miterlimit:4.4444;}
-	.st3{fill:#FFFFFF;}
+	.st3{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
 </style>
 <g class="st0">
 	<rect x="-0.7" y="-0.2" class="st1" width="32.9" height="32.9"/>
@@ -27,9 +27,5 @@
 	<circle class="st2" cx="15.7" cy="12.7" r="5.5"/>
 	<path class="st2" d="M7.8,26c0.9-3.6,4.2-6.3,8.1-6.3c3.8,0,7,2.5,8,6"/>
 </g>
-<g>
-	<path class="st3" d="M22.3,8.2l0.2,3.6H22c-0.1-0.6-0.2-1.1-0.3-1.4c-0.2-0.5-0.5-0.8-1-1c-0.4-0.2-0.9-0.3-1.6-0.3H17v11.8
-		c0,1,0.1,1.6,0.3,1.8c0.3,0.3,0.7,0.5,1.3,0.5h0.5v0.4h-6.5v-0.4h0.5c0.6,0,1.1-0.2,1.4-0.6c0.2-0.2,0.2-0.8,0.2-1.6V9.1h-1.9
-		c-0.7,0-1.2,0-1.6,0.1c-0.4,0.1-0.7,0.4-1,0.8s-0.5,1-0.5,1.6H9.5l0.2-3.6L22.3,8.2L22.3,8.2z"/>
-</g>
+<circle class="st3" cx="16" cy="16" r="8"/>
 </svg>

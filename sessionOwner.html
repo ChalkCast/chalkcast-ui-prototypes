@@ -193,15 +193,25 @@
         
         <div class="exit" onclick="toggleChalkboard()"></div>
         <ul id="toolbar">
-          <li id="text"></li>
+          <li id="draw" class="active" onclick="changeTool('draw')"></li>
+          <li id="line" onclick="changeTool('line')"></li>
+          <li id="square" onclick="changeTool('square')"></li>
+          <li id="circle" onclick="changeTool('circle')"></li>
+          <li id="text" onclick="changeTool('text')"></li>
+          <li id="eraser" onclick="changeTool('eraser')"></li>
+
           <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
           <li id="blue" onclick="changeColor('blue')"></li>
           <li id="green" onclick="changeColor('green')"></li>
           <li id="red" onclick="changeColor('red')"></li>
           <li id="purple" onclick="changeColor('purple')"></li>
           <li id="orange" onclick="changeColor('orange')"></li>
-          <li id="eraser" onclick="toggleEraser()"></li>
+
+          
+          <li id="clear" onclick="clearChalkboard()"></li>
         </ul>
+
+        <div id="textContainer"></div>
       </div>
 
       <div id="prevButton" onclick="prevScreen()"></div>

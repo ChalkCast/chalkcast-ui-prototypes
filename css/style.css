@@ -1135,8 +1135,8 @@ nav .button-collapse {
 
 #templateToggle {
   position: fixed;
-  top: 12px;
-  left: 12px;
+  top: 8px;
+  left: 8px;
   z-index: 8;
   width: 50px;
   height: 50px;
@@ -1148,8 +1148,8 @@ nav .button-collapse {
 
 #templateMenu {
   position: fixed;
-  top: 12px;
-  left: 68px;
+  top: 8px;
+  left: 64px;
   z-index: -1;
   opacity: 0;
   width: 380px;
@@ -1202,7 +1202,7 @@ nav .button-collapse {
   height: 80px;
   width: 80px;
   border-radius: 40px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 1);
   margin-right: 8px;
   background-size: 40%;
   cursor: pointer;
@@ -1222,6 +1222,15 @@ nav .button-collapse {
   height: 44px;
 }
 
+
+.chalkboardText {
+  background-color: rgba(0,0,0,0.1);
+  position: absolute;
+  display: inline-block;
+  min-width: 40px; 
+  max-width: 200px;
+
+}
 
 .whiteboard {
   background-color: rgba(255, 255, 255, 0.95);
@@ -1256,22 +1265,26 @@ nav .button-collapse {
   margin: 0;
   padding: 0;
   position: fixed;
-  top: 100px;
-  left: 12px;
+  top: 8px;
+  left: 100px;
 }
 
 #toolbar li {
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  margin-bottom: 10px;
+  margin-right: 4px;
   cursor: pointer;
+  display: inline-block;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   transition-duration: 0.5s;
+  opacity: 0.7;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 #toolbar li.active {
-  width: 80px;
+  opacity: 1;
 }
 
 #mainColor {
@@ -1296,21 +1309,54 @@ nav .button-collapse {
 
 #orange {
   background-color: #d69e54;
+  margin-right: 40px !important;
+}
+
+#mainColor.active, #blue.active, #green.active, #red.active, #purple.active, #orange.active {
+
 }
 
 #eraser {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/sketchCursorEraser.svg');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+  margin-right: 40px !important;
+}
+
+#clear {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/clear.svg');
 }
 
 #text {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/text.svg');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
 }
+
+#line {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/line.svg');
+}
+
+#circle {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/circle.svg');
+}
+
+#square {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/square.svg');
+}
+
+#draw {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/draw.svg');
+}
+
+#eraser.active, #clear.active, #text.active, #line.active, #circle.active, #square.active, #draw.active {
+  background-color: var(--main-color) !important;
+}
+
+
 
 .tile {
   order: 1;
@@ -2016,7 +2062,7 @@ nav .button-collapse {
 #chalkboardContainer {
   position: fixed;
   top: 12px;
-  left: 10px;
+  left: 120px;
   width: 0px;
   height: calc(100vh - 24px);
   z-index: 4;
@@ -2026,12 +2072,10 @@ nav .button-collapse {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   transition-duration: 0.3s;
   overflow: hidden;
-
-  
 }
 
 #chalkboardContainer.active {
-  width: calc(80% - 16px);
+  width: calc(80% - 128px);
 }
 
 /* Raised Hand */
