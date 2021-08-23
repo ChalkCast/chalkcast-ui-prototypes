@@ -700,7 +700,6 @@ h6 {
 
 }
 
-
 .social-icon {
     color: #fff;
 }
@@ -1086,51 +1085,80 @@ nav .button-collapse {
 }
 
 .gridSmall, #gridSmall {
-  background-image: url(../images/chalkboard-templates/smallGrid.png);
+  background-image: url(../images/chalkboard-templates/gridSmall.svg);
+  background-repeat: repeat;
 }
 
 .gridLarge, #gridLarge {
-  background-image: url(../images/chalkboard-templates/largeGrid.png);
+  background-image: url(../images/chalkboard-templates/gridLarge.svg);
 }
 
 .dotsSmall, #dotsSmall {
-  background-image: url(../images/chalkboard-templates/smallDots.png);
+  background-image: url(../images/chalkboard-templates/dotsSmall.svg);
 }
 
 .dotsLarge, #dotsLarge {
-  background-image: url(../images/chalkboard-templates/largeDots.png);
+  background-image: url(../images/chalkboard-templates/dotsLarge.svg);
 }
 
 .lines, #lines {
-  background-image: url(../images/chalkboard-templates/notebookLines.png);
+  background-image: url(../images/chalkboard-templates/notebook.svg);
 }
 
 .sheetMusic, #sheetMusic {
   background-image: url(../images/chalkboard-templates/sheetMusic.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .tabGuitar, #tabGuitar {
   background-image: url(../images/chalkboard-templates/TabGuitar.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .worldMap, #worldMap {
   background-image: url(../images/chalkboard-templates/worldMap.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .usMap, #usMap {
   background-image: url(../images/chalkboard-templates/usMap.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+}
+
+.asiaMap, #asiaMap {
+  background-image: url(../images/chalkboard-templates/asiaMap.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.europeMap, #europeMap {
+  background-image: url(../images/chalkboard-templates/europeMap.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.vennDiagram, #vennDiagram {
+  background-image: url(../images/chalkboard-templates/vennDiagram.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.periodicTable, #periodicTable {
+  background-image: url(../images/chalkboard-templates/periodicTable.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 #templateToggle {
@@ -1152,9 +1180,9 @@ nav .button-collapse {
   left: 64px;
   z-index: -1;
   opacity: 0;
-  width: 380px;
-  height: 200px;
-  background-color: rgba(0,0,0,0.4);
+  width: 580px;
+  height: 250px;
+  background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(30px);
   border-radius: 28px;
 }
@@ -1167,7 +1195,7 @@ nav .button-collapse {
 
 .templateCategory {
   float: left;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   border-top-left-radius: 28px;
   border-bottom-left-radius: 28px;
 }
@@ -1183,13 +1211,13 @@ nav .button-collapse {
 }
 
 .templateCategory li.active{
-  border-right: 2px solid #fff;
+  border-right: 2px solid var(--main-color);
   opacity: 1;
 }
 
 .templateContainer {
   float: right;
-  width: 200px;
+  width: 400px;
   height: 200px;
 }
 
@@ -1199,17 +1227,19 @@ nav .button-collapse {
 
 .templatesList li {
   display: inline-block;
-  height: 80px;
-  width: 80px;
-  border-radius: 40px;
-  background-color: rgba(0, 0, 0, 1);
-  margin-right: 8px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 0 8px 12px 0;
   background-size: 40%;
   cursor: pointer;
+  line-height: 60px;
+  font-size: 1.6rem;
+  padding: 0 20px;
 }
 
 .templatesList li.active {
-  border: 1px solid #fff;
+  border: 1px solid var(--main-color);
 }
 
 
@@ -1224,7 +1254,7 @@ nav .button-collapse {
 
 
 .chalkboardText {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0,0,0,0);
   position: absolute;
   display: inline-block;
   min-width: 40px; 
@@ -1234,13 +1264,14 @@ nav .button-collapse {
 
 .whiteboard {
   background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
 }
 
 .exit {
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 24px;
   background-image: url(../images/icons/exit.svg);
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   position: fixed;
   top: 8px;
   right: 8px;
@@ -1249,15 +1280,15 @@ nav .button-collapse {
 
 #toggleBackground {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 12px;
+  right: 80px;
   cursor: pointer;
   height: 50px;
+  width: 100px;
   line-height: 50px;
   border-radius: 25px;
-  padding: 0 20px;
   background-color: rgba(0,0,0,0.4);
-  background-blend-mode: blur(50px);
+
 }
 
 #toolbar {
@@ -1270,9 +1301,9 @@ nav .button-collapse {
 }
 
 #toolbar li {
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
   margin-right: 4px;
   cursor: pointer;
   display: inline-block;
@@ -1316,6 +1347,22 @@ nav .button-collapse {
   width: 80px !important;
 }
 
+#dayMode {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/dayMode.svg');
+  margin-right: 40px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+#nightMode {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/nightMode.svg');
+  margin-right: -3px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
 #eraser {
   background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/sketchCursorEraser.svg');
@@ -1352,7 +1399,7 @@ nav .button-collapse {
   background-image: url('../images/icons/draw.svg');
 }
 
-#eraser.active, #clear.active, #text.active, #line.active, #circle.active, #square.active, #draw.active {
+#eraser.active, #clear.active, #text.active, #line.active, #circle.active, #square.active, #draw.active, #nightMode.active, #dayMode.active {
   background-color: var(--main-color) !important;
 }
 

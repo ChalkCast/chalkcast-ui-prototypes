@@ -5,7 +5,7 @@ let tileSize = 24;
 
 let snakeHead;
 let snakeBody = [];
-let startingApples
+let startingApples;
 let apples = [];
 
 let previousDir = 'Right';

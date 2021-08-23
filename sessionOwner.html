@@ -151,34 +151,43 @@
 
       <div id="chalkboardContainer">
 
-        <canvas id="chalkboard" class="chalkboard" hidpi="off" resize>     </canvas>
+        <canvas id="chalkboard" class="chalkboard" hidpi="off" resize="true">     </canvas>
         <div id="templateToggle" onclick="toggleTemplateMenu()"></div>
         <div id="templateMenu">
           <ul class="templateCategory">
             <li id="MathCategory" class="active" onclick="toggleTemplateCategory('Math')">Math</li>
             <li id="LanguageCategory" onclick="toggleTemplateCategory('Language')">Language</li>
             <li id="GeographyCategory" onclick="toggleTemplateCategory('Geography')">Geography</li>
+            <li id="ScienceCategory" onclick="toggleTemplateCategory('Science')">Science</li>
             <li id="MusicCategory" onclick="toggleTemplateCategory('Music')">Music</li>
+            
           </ul>
           <div class="templateContainer">
             <ul class="templatesList" id="Math" style="display: block">
-              <li id="gridSmall" onclick="toggleTemplate('gridSmall')"></li>
-              <li id="gridLarge" onclick="toggleTemplate('gridLarge')"></li>
-              <li id="dotsSmall" onclick="toggleTemplate('dotsSmall')"></li>
-              <li id="dotsLarge" onclick="toggleTemplate('dotsLarge')"></li>
+              <li id="gridSmall" onclick="toggleTemplate('gridSmall')">Small Grid</li>
+              <li id="gridLarge" onclick="toggleTemplate('gridLarge')">Large Grid</li>
+              <li id="dotsSmall" onclick="toggleTemplate('dotsSmall')">Small Dots</li>
+              <li id="dotsLarge" onclick="toggleTemplate('dotsLarge')">Large Dots</li>
+              <li id="vennDiagram" onclick="toggleTemplate('vennDiagram')">Venn Diagram</li>
             </ul>
             <ul class="templatesList" id="Language" style="display: none">
-              <li id="lines" onclick="toggleTemplate('lines')"></li>
+              <li id="lines" onclick="toggleTemplate('lines')">Notebook</li>
             </ul>
             <ul class="templatesList" id="Geography" style="display: none">
-              <li id="worldMap" onclick="toggleTemplate('worldMap')"></li>
-              <li id="usMap" onclick="toggleTemplate('usMap')"></li>
+              <li id="worldMap" onclick="toggleTemplate('worldMap')">World Map</li>
+              <li id="usMap" onclick="toggleTemplate('usMap')">US Map</li>
+              <li id="europeMap" onclick="toggleTemplate('europeMap')">Europe Map</li>
+              <li id="asiaMap" onclick="toggleTemplate('asiaMap')">Asia Map</li>
+            </ul>
+            <ul class="templatesList" id="Science" style="display: none">
+              <li id="periodicTable" onclick="toggleTemplate('periodicTable')">Periodic Table</li>
             </ul>
             <ul class="templatesList Music" id="Music" style="display: none">
-              <li id="sheetMusic" onclick="toggleTemplate('sheetMusic')"></li>
-              <li id="tabGuitar" onclick="toggleTemplate('tabGuitar')"></li>
+              <li id="sheetMusic" onclick="toggleTemplate('sheetMusic')">Sheet Music</li>
+              <li id="tabGuitar" onclick="toggleTemplate('tabGuitar')">Guitar Tab</li>
             </ul>
           </div>
+          
         </div>
           <!-- <option value="">Template</option>
           <option value="gridSmall">Grid (small)</option>
@@ -193,6 +202,10 @@
         
         <div class="exit" onclick="toggleChalkboard()"></div>
         <ul id="toolbar">
+          <li id="nightMode" onclick="toggleBackground('day')" class="active"></li>
+          <li id="dayMode" onclick="toggleBackground('night')"></li>
+          
+
           <li id="draw" class="active" onclick="changeTool('draw')"></li>
           <li id="line" onclick="changeTool('line')"></li>
           <li id="square" onclick="changeTool('square')"></li>
@@ -208,6 +221,7 @@
           <li id="orange" onclick="changeColor('orange')"></li>
 
           
+
           <li id="clear" onclick="clearChalkboard()"></li>
         </ul>
 
