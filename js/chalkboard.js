@@ -70,7 +70,7 @@ function initializePaper() {
         }
         //Is it an arrow?
         else {
-            //arrowTest(path);
+            arrowTest(path);
         }
             
 
@@ -390,10 +390,10 @@ function arrowTest(path) {
 
     //A is origin point
     A = new paper.Point(x[0],y[0]);
-    var text = new PointText(A);
-    text.justification = 'center';
-    text.fillColor = 'blue';
-    text.content = 'A';		
+    // var text = new PointText(A);
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'A';		
     
     for (i = 0; i < x.length; i++) {
         var distance = Math.sqrt((x[i]-x[0])*(x[i]-x[0]) + (y[i]-y[0])*(y[i]-y[0])); 
@@ -404,9 +404,9 @@ function arrowTest(path) {
         }
     }
     var text = new PointText(B);
-    text.justification = 'center';
-    text.fillColor = 'blue';
-    text.content = 'B';		
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'B';		
     
     //We have AB now 
     var AB = new paper.Path(A, B);
@@ -418,38 +418,37 @@ function arrowTest(path) {
 
     var Epoint = AB.getPointAt(offset);
     var E = new paper.Point(Epoint);
-    var text = new PointText(E);
-    text.justification = 'center';
-    text.fillColor = 'blue';
-    text.content = 'E';		
+    // var text = new PointText(E);
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'E';		
 
-    var normal = path.getNormalAt(offset);
-    normal.length = AB.length*0.3;
+    var normal = path.getNormalAt(offset).multiply(AB.length*0.3);
 
     //Find C and D
-    var cCheck = new paper.Point(E + normal);
-    var text = new PointText(cCheck);
-    text.justification = 'center';
-    text.fillColor = 'blue';
-    text.content = 'c';	
+    var cCheck = new paper.Point(E.add(normal));
+    // var text = new PointText(cCheck);
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'c';	
 
-    var dCheck = new paper.Point(E - normal);
-    //var text = new PointText(dCheck);
-    //text.justification = 'center';
-    //text.fillColor = 'blue';
-    //text.content = 'd';	
+    var dCheck = new paper.Point(E.subtract(normal));
+    // var text = new PointText(dCheck);
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'd';	
 
     C = path.getNearestPoint(cCheck);
-    //var text = new PointText(C);
-    //text.justification = 'center';
-    //text.fillColor = 'blue';
-    //text.content = 'C';	
+    // var text = new PointText(C);
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'C';	
 
     D = path.getNearestPoint(dCheck);
-    //var text = new PointText(D);
-    //text.justification = 'center';
-    //text.fillColor = 'blue';
-    //text.content = 'D';	
+    // var text = new PointText(D);
+    // text.justification = 'center';
+    // text.fillColor = 'blue';
+    // text.content = 'D';	
 
     //We have BC now 
     var BC = new paper.Path(B, C);
@@ -482,14 +481,23 @@ function arrowTest(path) {
     console.log(headRatio, idealLength, lowestLength);
     
     if ((idealLength > BC.length && BC.length > lowestLength)  
-        && (idealLength > BD.length &&  BD.length > lowestLength)  
+        && (idealLength > BD.length && BD.length > lowestLength)  
         && (idealLength > CD.length && CD.length > lowestLength*1.5) 
         && (AB.length > (path.length*0.4)) 
         && (DE.length > lowestLength) 
         && (CE.length > lowestLength) 
         && (headRatio > 0.5) 
         && (headRatio < 1.5)) {
-            path.strokeColor = 'purple';
+            path.remove();
+            arrowShaft = new paper.Path(A,B);
+            arrowHeadA = new paper.Path(B,C);
+            arrowHeadB = new paper.Path(B,D);
+            arrowShaft.strokeColor = strokeColor;
+            arrowShaft.strokeWidth = strokeSize;
+            arrowHeadA.strokeColor = strokeColor;
+            arrowHeadA.strokeWidth = strokeSize;
+            arrowHeadB.strokeColor = strokeColor;
+            arrowHeadB.strokeWidth = strokeSize;
     }	
 }
 
