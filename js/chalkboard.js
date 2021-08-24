@@ -106,7 +106,8 @@ function initializePaper() {
     circle.onMouseDrag = function(event) {
         path.remove();
         finalX = event.point.x;
-        finalY = event.point.y;
+        let xDiff = initialX - event.point.x;
+        finalY = initialY - xDiff;
         rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
         path = new paper.Path.Ellipse(rect);
         path.strokeColor = strokeColor;
@@ -115,7 +116,7 @@ function initializePaper() {
     circle.onMouseUp = function(event) {
         finalX = event.point.x;
         finalY = event.point.y;
-        rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalX));
         path = new paper.Path.Ellipse(rect);
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
@@ -191,7 +192,7 @@ function initializePaper() {
 
 //Recognition functions
 function isClosedShape(path) {
-    let threshold = paper.view.size.width / 80;
+    let threshold = paper.view.size.width / 50;
     
     let distance = path.segments[0].point.getDistance(path.segments[path.segments.length-1].point) 
 
@@ -489,6 +490,8 @@ function arrowTest(path) {
         && (headRatio > 0.5) 
         && (headRatio < 1.5)) {
             path.remove();
+            
+            //Add beautified arrow
             arrowShaft = new paper.Path(A,B);
             arrowHeadA = new paper.Path(B,C);
             arrowHeadB = new paper.Path(B,D);
@@ -498,6 +501,12 @@ function arrowTest(path) {
             arrowHeadA.strokeWidth = strokeSize;
             arrowHeadB.strokeColor = strokeColor;
             arrowHeadB.strokeWidth = strokeSize;
+
+            if (strokeColor === 'white' || strokeColor === 'black') {
+                sketch.push(arrowShaft);
+                sketch.push(arrowHeadA);
+                sketch.push(arrowHeadB);
+            }
     }	
 }
 
