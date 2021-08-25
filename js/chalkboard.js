@@ -46,6 +46,8 @@ function initializePaper() {
 
         //Recognition tests / features
         //Is it a closed shape? (Returns true or false)
+        let line = isLine(path); 
+        //Is it a closed shape? (Returns true or false)
         let closedShape = isClosedShape(path); 
         //Returns top left point of bounding box
         let topLeftPoint = getTopLeftPoint(path);
@@ -54,26 +56,31 @@ function initializePaper() {
         //Returns # of corners in stroke
         let corners = getCorners(path);
 
+
+        //Is it a line?
+        if (line) {
+            firstPoint = path.segments[0].point;
+            lastPoint = path.segments[path.segments.length-1].point;
+            path.remove();
+            path = new paper.Path(firstPoint,lastPoint);
+        }
         //Is it a circle?
         if (closedShape && corners <= 2) {
             path.remove();
             rect = new paper.Rectangle(topLeftPoint, bottomRightPoint);
             path = new paper.Path.Ellipse(rect);
-            path.strokeColor = strokeColor;
-            path.strokeWidth = strokeSize;
         }
         //Is it a square?
         else if (closedShape && corners > 2 && corners < 5) {
             path.remove();
             path = new paper.Path.Rectangle(topLeftPoint, bottomRightPoint);
-            path.strokeColor = strokeColor;
-            path.strokeWidth = strokeSize;
         }
         //Is it an arrow?
         else {
             arrowTest(path);
         }
-            
+        path.strokeColor = strokeColor;
+        path.strokeWidth = strokeSize;
 
         if (strokeColor === 'white' || strokeColor === 'black') {
             sketch.push(path);
@@ -81,6 +88,7 @@ function initializePaper() {
 
     }
 
+    //Line shape tool
     line = new Tool();
     line.onMouseDown = function(event) {
         path = new paper.Path();
@@ -98,6 +106,7 @@ function initializePaper() {
         }
     }
 
+    //Circle shape tool
     circle = new Tool();
     circle.onMouseDown = function(event) {
         path = new paper.Path();
@@ -146,6 +155,7 @@ function initializePaper() {
         }
     }
 
+    //Square shape tool
     square = new Tool();
     square.onMouseDown = function(event) {
         path = new paper.Path();
@@ -185,7 +195,7 @@ function initializePaper() {
         }
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
-        
+
         if (strokeColor === 'white' || strokeColor === 'black') {
             sketch.push(path);
         }
@@ -232,6 +242,17 @@ function initializePaper() {
 }
 
 //Recognition functions
+function isLine(path) {
+    let firstLastDistance = path.segments[0].point.getDistance(path.segments[path.segments.length-1].point);
+    let ratio = firstLastDistance / path.length;
+    if (ratio > 0.95) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function isClosedShape(path) {
     let threshold = paper.view.size.width / 50;
     
