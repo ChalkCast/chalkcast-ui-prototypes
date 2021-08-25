@@ -19,6 +19,7 @@ let finalX;
 let finalY;
 
 let undoneSketches = [];
+let shiftPressed = false;
 
 //Initialization of PaperJS and attaching to canvas
 paper.install(window);
@@ -105,21 +106,41 @@ function initializePaper() {
     }
     circle.onMouseDrag = function(event) {
         path.remove();
+
         finalX = event.point.x;
-        let xDiff = initialX - event.point.x;
-        finalY = initialY - xDiff;
-        rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
-        path = new paper.Path.Ellipse(rect);
+        if (event.event.shiftKey) {
+            let xDiff = initialX - event.point.x;
+            finalY = initialY - xDiff;
+            rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+            path = new paper.Path.Ellipse(rect);
+        }
+        else {
+            finalY = event.point.y;
+            rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+            path = new paper.Path.Ellipse(rect);
+        }
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
     }
     circle.onMouseUp = function(event) {
+        path.remove();
+
+        //Is shift key pressed? Constrain to 1:1 proportions based on x
         finalX = event.point.x;
-        finalY = event.point.y;
-        rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalX));
-        path = new paper.Path.Ellipse(rect);
+        if (event.event.shiftKey) {
+            let xDiff = initialX - event.point.x;
+            finalY = initialY - xDiff;
+            rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+            path = new paper.Path.Ellipse(rect);
+        }
+        else {
+            finalY = event.point.y;
+            rect =  new paper.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+            path = new paper.Path.Ellipse(rect);
+        }
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
+
         if (strokeColor === 'white' || strokeColor === 'black') {
             sketch.push(path);
         }
@@ -133,18 +154,38 @@ function initializePaper() {
     }
     square.onMouseDrag = function(event) {
         path.remove();
+        
+        //Is shift key pressed? Constrain to 1:1 proportions based on x
         finalX = event.point.x;
-        finalY = event.point.y;
-        path =  new paper.Path.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        if (event.event.shiftKey) {
+            let xDiff = initialX - event.point.x;
+            finalY = initialY - xDiff;
+            path = new paper.Path.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        }
+        else {
+            finalY = event.point.y;
+            path = new paper.Path.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        }
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
     }
     square.onMouseUp = function(event) {
+        path.remove();
+        
+        //Is shift key pressed? Constrain to 1:1 proportions based on x
         finalX = event.point.x;
-        finalY = event.point.y;
-        path = new paper.Path.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        if (event.event.shiftKey) {
+            let xDiff = initialX - event.point.x;
+            finalY = initialY - xDiff;
+            path = new paper.Path.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        }
+        else {
+            finalY = event.point.y;
+            path = new paper.Path.Rectangle(new Point(initialX, initialY), new Point(finalX, finalY));
+        }
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
+        
         if (strokeColor === 'white' || strokeColor === 'black') {
             sketch.push(path);
         }
@@ -686,3 +727,12 @@ function redo() {
     undoneSketches[undoneSketches.length-1].remove();
     undoneSketches.splice(undoneSketches.length-1,1);
 }
+
+document.onkeydown = function (e) {
+    if (e.shiftKey) {
+        shiftPressed = true;
+    }
+    else {
+        shiftPressed = false;
+    }
+};
