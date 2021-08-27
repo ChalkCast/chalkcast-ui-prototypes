@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css" >
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body class="darkbody">
+   
+    <ul class="optionList">
+      <li id="option1" class="active" onclick="selectAnimation('1')">Option 1</li>
+      <li id="option2" onclick="selectAnimation('2')">Option 2</li>
+      <li id="option3" onclick="selectAnimation('3')">Option 3</li>
+      <li id="option4" onclick="selectAnimation('4')">Option 4</li>
+      <li id="option5" onclick="selectAnimation('5')">Option 5</li>
+      <li id="option6" onclick="selectAnimation('6')">Option 6</li>
+    </ul>
+
+    <div id="loadingEmblem"></div>
+    <div id="smallLoadingEmblem" style="display: none"></div>
+    <div id="loading" style="display: none"><div id="loadingBar"></div></div>
+    
+    <div id="bouncyLoader" class="flex" style="display: none">
+      <span class="circle-1"></span>
+      <span class="circle-2"></span>
+      <span class="circle-3"></span>
+      <span class="circle-4"></span>
+      <span class="circle-5"></span>
+      </div>
+
+      <div class="col-sm-6 text-center"><div id="fadeLoader" class="loader1">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div></div>
+
+     <!--Import jQuery before materialize.js-->
+     <!--JS Frameworks-->
+     <script src="./js/paper-full.min.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     <script src="./js/chalkboard.js"></script>
+
+     <script>
+      function selectAnimation(option) {
+        document.getElementById('option1').className = '';
+        document.getElementById('option2').className = '';
+        document.getElementById('option3').className = '';
+        document.getElementById('option4').className = '';
+        document.getElementById('option5').className = '';
+        document.getElementById('option6').className = '';
+
+        document.getElementById('smallLoadingEmblem').style = "display: none";
+        document.getElementById('loadingEmblem').style = "display: none";
+        document.getElementById('loading').style = "display: none";
+        document.getElementById('bouncyLoader').style = "display: none";
+        document.getElementById('fadeLoader').style = "display: none";
+
+        document.getElementById('option'+option).className = 'active';
+
+        if (option === '1') {
+          document.getElementById('loadingEmblem').style = "display: block";
+        }
+        else if (option === '2') {
+          document.getElementById('smallLoadingEmblem').style = "display: block";
+        }
+        else if (option === '3') {
+          document.getElementById('smallLoadingEmblem').style = "display: block";
+          document.getElementById('loadingEmblem').style = "display: block";
+        }
+        else if (option === '4') {
+          document.getElementById('loading').style = "display: block";
+        }
+        else if (option === '5') {
+          document.getElementById('bouncyLoader').style = "display: flex";
+        }
+        else if (option === '6') {
+          document.getElementById('fadeLoader').style = "display: inline-block";
+        }
+
+      }
+
+
+      rotation = 0;
+      rotationSmall = 0;
+      animation = setInterval(function(){ 
+        rotation = rotation + 2;
+        document.getElementById('loadingEmblem').style.transform = "rotate("+rotation+"deg)";
+        rotationSmall = rotationSmall - 3;
+        document.getElementById('smallLoadingEmblem').style.transform = "rotate("+rotationSmall+"deg)";
+      }, 5);
+
+      // width = 0;
+      // loader = setInterval(function(){ 
+      //   if (width === 100) {
+      //     width = 0;
+      //   }
+      //   else {
+      //     width++;
+      //   }
+      //   document.getElementById('loadingBar').style.width = width+"%";
+
+      // }, 20);
+      </script>
+    </body>
+</html>

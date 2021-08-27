@@ -42,11 +42,11 @@ function initializePaper() {
         path.add(event.point);
     }
     chalk.onMouseUp = function(event) {
-        path.smooth();
+        path.simplify();
 
         //Recognition tests / features
         //Is it a closed shape? (Returns true or false)
-        let line = isLine(path); 
+        let lineRatio = isLine(path); 
         //Is it a closed shape? (Returns true or false)
         let closedShape = isClosedShape(path); 
         //Returns top left point of bounding box
@@ -58,7 +58,7 @@ function initializePaper() {
 
 
         //Is it a line?
-        if (line) {
+        if (lineRatio > 0.98) {
             firstPoint = path.segments[0].point;
             lastPoint = path.segments[path.segments.length-1].point;
             path.remove();
@@ -77,7 +77,7 @@ function initializePaper() {
         }
         //Is it an arrow?
         else {
-            arrowTest(path);
+            arrowTest(path, lineRatio);
         }
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
@@ -94,8 +94,16 @@ function initializePaper() {
         path = new paper.Path();
         path.strokeColor = strokeColor;
         path.strokeWidth = strokeSize;
-        path.add(event.point);
-        path.add(event.point);
+        if (sketch.length > 0 && event.event.shiftKey) {
+            lastPath = sketch[sketch.length-1];
+            path.add(lastPath.segments[lastPath.segments.length-1].point);
+            path.add(event.point);
+        }
+        else {
+            path.add(event.point);
+            path.add(event.point);
+        }
+        
     }
     line.onMouseDrag = function(event) {
         path.segments[1].point = event.point;
@@ -245,12 +253,8 @@ function initializePaper() {
 function isLine(path) {
     let firstLastDistance = path.segments[0].point.getDistance(path.segments[path.segments.length-1].point);
     let ratio = firstLastDistance / path.length;
-    if (ratio > 0.95) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    console.log(ratio);
+    return ratio;
 }
 
 function isClosedShape(path) {
@@ -422,7 +426,7 @@ function getCorners(path) {
             // Split stroke
             //path.segments[i].
             //subStrokes.push()
-            //console.log(subStrokes);
+            //(subStrokes);
             //var corner = new paper.Path.Circle(new paper.Point(Sx[i], Sy[i]), 8);
             //corner.fillColor = 'red';
             corners++;
@@ -435,7 +439,7 @@ function getCorners(path) {
 }
 
 //Tahuti Arrow Recognizer
-function arrowTest(path) {
+function arrowTest(path, lineRatio) {
     let A = 0;
     let B = 0;
     let C = 0;
@@ -541,7 +545,7 @@ function arrowTest(path) {
     var headRatio = BC.length / BD.length;
     var idealLength = AB.length*0.4;
     var lowestLength = AB.length*0.02;
-    console.log(headRatio, idealLength, lowestLength);
+    //console.log(headRatio, idealLength, lowestLength);
     
     if ((idealLength > BC.length && BC.length > lowestLength)  
         && (idealLength > BD.length && BD.length > lowestLength)  
@@ -550,7 +554,9 @@ function arrowTest(path) {
         && (DE.length > lowestLength) 
         && (CE.length > lowestLength) 
         && (headRatio > 0.5) 
-        && (headRatio < 1.5)) {
+        && (headRatio < 1.5)
+        && (lineRatio < 0.8)
+        ) {
             path.remove();
             
             //Add beautified arrow
