@@ -1666,6 +1666,14 @@ nav .button-collapse {
   background-attachment: fixed;
 }
 
+.lightbody {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgb(255 255 255 / 100%), rgba(0,0,100,0.1) 150%), 
+              linear-gradient(32deg, rgb(0 255 98 / 30%), rgba(0,255,0,0) 75%), 
+              linear-gradient(334deg, rgba(0,0,255,.3), rgba(0,0,255,0) 75%);
+}
+
 #yourStream {
   background-size: cover;
   width: 100px;
@@ -2470,13 +2478,15 @@ div.flex{
 	animation-delay: .8s;
 }
 
+
+
 .loader1 {
   display:inline-block;
   font-size:0px;
   padding:0px;
   position: fixed;
-  left: calc(50vw - 50px);
-  top: calc(50vh - 10px);
+  left: calc(50% - 50px);
+  top: calc(50% - 10px);
 }
 .loader1 span {
   vertical-align:middle;
@@ -2521,6 +2531,63 @@ div.flex{
   to {transform: scale(1, 1);}
 }
 @-webkit-keyframes loader1 {
+  from {-webkit-transform: scale(0, 0);}
+  to {-webkit-transform: scale(1, 1);}
+}
+
+.loader2 {
+  display:inline-block;
+  font-size:0px;
+  padding:0px;
+  margin: 0 auto;
+  position: fixed;
+  left: calc(50% - 50px);
+  top: calc(50% - 10px);
+}
+.loader2 span {
+  vertical-align:middle;
+  border-radius:100%;
+  
+  display:inline-block;
+  width:16px;
+  height:16px;
+  margin:3px 2px;
+  -webkit-animation:loader2 0.8s linear infinite alternate;
+  animation:loader2 0.8s linear infinite alternate;
+}
+.loader2 span:nth-child(1) {
+  -webkit-animation-delay:-1s;
+  animation-delay:-1s;
+  background: var(--main-color);
+
+}
+.loader2 span:nth-child(2) {
+  -webkit-animation-delay:-0.8s;
+  animation-delay:-0.8s;
+ background: var(--main-color);
+}
+.loader2 span:nth-child(3) {
+  -webkit-animation-delay:-0.26666s;
+  animation-delay:-0.26666s;
+ background: var(--main-color);
+}
+.loader2 span:nth-child(4) {
+  -webkit-animation-delay:-0.8s;
+  animation-delay:-0.8s;
+ background: var(--main-color);
+ 
+}
+.loader2 span:nth-child(5) {
+  -webkit-animation-delay:-1s;
+  animation-delay:-1s;
+ background: var(--main-color);
+}
+
+@keyframes loader2 {
+  from {transform: scale(0, 0);}
+  to {transform: scale(1, 1);}
+}
+@-webkit-keyframes loader2 {
   from {-webkit-transform: scale(0, 0);}
   to {-webkit-transform: scale(1, 1);}
 }
