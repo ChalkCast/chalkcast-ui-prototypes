@@ -20,7 +20,7 @@
         <li id="nightMode" onclick="toggleLoader('night')" class="active"></li>
         <li id="dayMode" onclick="toggleLoader('day')"></li>
     </ul>
-        <div id="loader" class="loader1">
+        <div id="loader">
             <span></span>
             <span></span>
             <span></span>
@@ -40,13 +40,13 @@
                 document.body.className = 'lightbody';
                 document.getElementById('dayMode').className = 'active';
                 document.getElementById('nightMode').className = '';
-                document.getElementById('loader').className = 'loader2';
+                document.getElementById('loader').className = 'light';
              }
              else {
                 document.body.className = 'darkbody';
                 document.getElementById('dayMode').className = '';
                 document.getElementById('nightMode').className = 'active';
-                document.getElementById('loader').className = 'loader1';
+                document.getElementById('loader').className = '';
              }
          }
      </script>
