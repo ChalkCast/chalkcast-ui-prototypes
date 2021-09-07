@@ -438,7 +438,7 @@ function getCorners(path) {
     return corners;
 }
 
-//Tahuti Arrow Recognizer
+//Tahuti Arrow Recognizer by Tracy Hammond, MIT
 function arrowTest(path, lineRatio) {
     let A = 0;
     let B = 0;
@@ -763,3 +763,53 @@ document.onkeydown = function (e) {
         shiftPressed = false;
     }
 };
+
+
+//Saving sketch
+function saveChalkboard() {
+    let canvas = document.getElementById("chalkboard");
+    let dataURL = canvas.toDataURL({format: 'png', multiplier: 4})
+    download("image.png", dataURL)
+
+}
+// must be called in a click handler or some other user action
+let download = function(filename, dataUrl) {
+    let element = document.createElement('a')
+
+    let dataBlob = dataURLtoBlob(dataUrl)
+    element.setAttribute('href', URL.createObjectURL(dataBlob))
+    element.setAttribute('download', filename)
+
+    element.style.display = 'none'
+    document.body.appendChild(element)
+
+    element.click()
+
+    let clickHandler;
+    element.addEventListener('click', clickHandler=function() {
+        // ..and to wait a frame
+        requestAnimationFrame(function() {
+            URL.revokeObjectURL(element.href);
+        })
+
+        element.removeAttribute('href')
+        element.removeEventListener('click', clickHandler)
+    })
+
+    document.body.removeChild(element)
+}
+// from Abhinav's answer at  https://stackoverflow.com/questions/37135417/download-canvas-as-png-in-fabric-js-giving-network-error/
+let dataURLtoBlob = function(dataurl) {
+    let parts = dataurl.split(','), mime = parts[0].match(/:(.*?);/)[1]
+    if(parts[0].indexOf('base64') !== -1) {
+        let bstr = atob(parts[1]), n = bstr.length, u8arr = new Uint8Array(n)
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n)
+        }
+
+        return new Blob([u8arr], {type:mime})
+    } else {
+        let raw = decodeURIComponent(parts[1])
+        return new Blob([raw], {type: mime})
+    }
+}

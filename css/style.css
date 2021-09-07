@@ -1340,7 +1340,7 @@ nav .button-collapse {
 
 #orange {
   background-color: #d69e54;
-  margin-right: 40px !important;
+  margin-right: 32px !important;
 }
 
 #mainColor.active, #blue.active, #green.active, #red.active, #purple.active, #orange.active {
@@ -1350,7 +1350,7 @@ nav .button-collapse {
 #dayMode {
   background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/dayMode.svg');
-  margin-right: 40px !important;
+  margin-right: 32px !important;
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
 }
@@ -1366,12 +1366,18 @@ nav .button-collapse {
 #eraser {
   background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/sketchCursorEraser.svg');
-  margin-right: 40px !important;
+  margin-right: 32px !important;
 }
 
 #clear {
   background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/clear.svg');
+  margin-right: 32px !important;
+}
+
+#save {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/icons/save.svg');
 }
 
 #text {
