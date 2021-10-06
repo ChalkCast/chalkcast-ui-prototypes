@@ -1675,9 +1675,10 @@ nav .button-collapse {
 .lightbody {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgb(255 255 255 / 100%), rgba(0,0,100,0.1) 150%), 
-              linear-gradient(32deg, rgb(0 255 98 / 30%), rgba(0,255,0,0) 75%), 
-              linear-gradient(334deg, rgba(0,0,255,.3), rgba(0,0,255,0) 75%);
+  background: linear-gradient(rgb(255, 255, 255), rgba(0, 0, 100, 0.1) 100%), linear-gradient(
+    32deg, rgba(0, 255, 98, 0.3), rgba(0, 255, 0, 0) 75%), linear-gradient(
+    334deg, rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0) 75%);
+  background-attachment: fixed;
 }
 
 #yourStream {

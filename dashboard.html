@@ -19,48 +19,36 @@
   <body class="lightbody">
     <div class="header">
         <div class="logo"></div>
-        <div class="profile"></div>
+        <div class="profile" onclick="toggleProfileNav()">
+            <div class="profileImage"></div>
+            Billy
+        </div>
+
+        <div id="profileMenu">
+            <ul class="profileNav">
+                <li>App Settings</li>
+                <li>Logout</li>
+            </ul>
+        </div>
     </div>
     <div class="container">
         <div class="clear-20" ></div>
         <h2 class="true-teal">Good morning, <strong>Billy Zimbabwe!</strong></h2>
         <div class="clear-60" ></div>
-        <div class="row">
-            <div class="col s12 m6 l4">
-                <div class="roomCard" id="expandIn">
-                    <h4>Geometry 101</h4>
-                </div>
-                <div class="clear-60" ></div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="roomCard" id="slideIn">
-                    <h4>Geometry 101</h4>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="roomCard" id="scaleIn">
-                    <h4>Geometry 101</h4>
-                </div>
-            </div>
-        </div>
-        <div class="clear-60"></div>
-        <div class="clear-60"></div>
-        <div class="clear-60"></div>
-        <div class="row">
-            <div class="col s12 m6 l4">
-                <div class="roomCard" id="rotateIn">
-                    <h4>Geometry 101</h4>
-                </div>
-                <div class="clear-60" ></div>
-                
-            </div>
-            <div class="col s12 m6 l4">
+        
+        <ul class="dashboardNav">
+            <li class="active">My Rooms</li><li>Invited Rooms</li>   
+        </ul>
 
-            </div>
-            <div class="col s12 m6 l4">
-
-            </div>
-        </div>
+        <ul id="roomNav" class="roomNav">
+            <li class="addCardContainer">
+                <div class="addCard" onclick="addNewRoom()"></div>
+            </li>
+            <li class="roomCard">
+                <h4>Geometry 101</h4>
+                <h5><strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em></h5>
+            </li>
+        </ul>
     </div>   
 
      <!--Import jQuery before materialize.js-->
@@ -68,7 +56,27 @@
      <script src="./js/paper-full.min.js"></script>
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-     <script src="./js/chalkboard.js"></script>
-     <script src="./js/snake.js"></script>
+     <script>
+
+        let popSound = new Audio('./sounds/zap.wav');
+
+         function addNewRoom() {
+            let roomNav = document.getElementById('roomNav')
+            let room = document.createElement('li');
+            room.className = "roomCard";
+            let roomName = document.createElement('h4');
+            roomName.innerHTML = "Geometry 101";
+            let roomDetails = document.createElement('h5');
+            roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em>";
+            room.appendChild(roomName);
+            room.appendChild(roomDetails);
+            roomNav.insertBefore(room, roomNav.children[1]);
+            popSound.play();
+         }
+
+         function toggleProfileNav() {
+            document.getElementById('profileMenu').classList.toggle('active');
+         }
+     </script>
     </body>
 </html>
