@@ -311,7 +311,7 @@ function getCorners(path) {
 	let St = [];
 
 	let D = 0;
-	let straw = [];
+	let straws = [];
     let corners = 0;
 
 	let totalStraw = 0;
@@ -326,7 +326,7 @@ function getCorners(path) {
 		y.push(point.y);
 	}
 
-	// Determine S using Rubine F3 (Length of Bounding Box Diaganol)
+	// Determine S (resampled distance) using Rubine F3 (Length of Bounding Box Diaganol)
 	function getMaxOfArray(numArray) {
 		return Math.max.apply(null, numArray);
 	}
@@ -341,7 +341,7 @@ function getCorners(path) {
 	let S = Math.round(Diag / 40);
 
 
-	// Resample the stroke
+	// Resample the stroke based on S
 	for (i=1; i < x.length; i++) {
         let xdist = Math.abs( x[i] - x[i-1]);
         let ydist = Math.abs( y[i] - y[i-1]);
@@ -370,17 +370,11 @@ function getCorners(path) {
 		let strawEnd = new Point(Sx[i+w], Sy[i+w]);
 		let newStraw = new Path.Line(strawStart, strawEnd);
 		let newStrawLength = newStraw.length
-		straw.push(newStrawLength);
+		straws.push(newStrawLength);
 	}
-	//console.log(straw);
-	// Find average straw length
-	//for (i=0; i < straw.length; i++) {
-	//		var totalStraw = totalStraw + straw[i];
-	//}
-	//var strawAvg = totalStraw / straw.length;
 
 	// Find median straw length
-	let sortedStraw = straw.slice(0);
+	let sortedStraw = straws.slice(0);
 	let strawMed = getMedian(sortedStraw);
 
 	function getMedian(values) {
@@ -408,16 +402,21 @@ function getCorners(path) {
 
 	//var timeThreshold = 0.9;
 	// Find point candidates
+
+    var corner = new paper.Path.Circle(new paper.Point(Sx[0], Sy[0]), 8);
+    corner.fillColor = 'red';
+    corners++;
+
 	for (i = w; i < Sx.length - w; i++) {
 
-		if (straw[i] < threshold) {
+		if (straws[i] < threshold) {
 
 				var localMin = 10000;
 				var localMinIndex = i;
-				while (i < straw.length && straw[i] < threshold) {
+				while (i < straws.length && straws[i] < threshold) {
 
-					if (straw[i] < localMin) {
-						localMin = straw[i];
+					if (straws[i] < localMin) {
+						localMin = straws[i];
 						localMinIndex = i;
 					}
 					i++;
@@ -427,8 +426,8 @@ function getCorners(path) {
             //path.segments[i].
             //subStrokes.push()
             //(subStrokes);
-            //var corner = new paper.Path.Circle(new paper.Point(Sx[i], Sy[i]), 8);
-            //corner.fillColor = 'red';
+            var corner = new paper.Path.Circle(new paper.Point(Sx[i], Sy[i]), 8);
+            corner.fillColor = 'red';
             corners++;
 
 
