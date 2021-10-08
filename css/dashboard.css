@@ -79,7 +79,34 @@
     line-height: 52px;
     padding-right: 20px;
     cursor: pointer;
-    padding: 0 5rem;
+    padding: 0 4.8rem;
+    transition-duration: 0.3s;
+}
+
+.profileNav li:hover {
+    color: var(--main-color);
+    font-weight: 600;
+    transition-duration: 0.3s;
+}
+
+.appSettings {
+    background: url('../images/icons/settingsGray.svg') no-repeat 0.4rem center;
+    background-size: 40px;
+}
+
+.appLogout {
+    background: url('../images/icons/logoutGray.svg') no-repeat 0.4rem center;
+    background-size: 40px;
+}
+
+.appSettings:hover {
+    background: url('../images/icons/settingsTeal.svg') no-repeat 0.4rem center;
+    background-size: 40px;
+}
+
+.appLogout:hover {
+    background: url('../images/icons/logoutTeal.svg') no-repeat 0.4rem center;
+    background-size: 40px;
 }
 
 .true-teal {
@@ -106,6 +133,7 @@
     margin: 0;
     padding: 0;
     margin-bottom: 40px;
+    width: 340px;
 }
 
 .dashboardNav li {
@@ -113,9 +141,9 @@
     color: #999;
     font-size: 2.4rem;
     line-height: 4.8rem;
-    padding: 0 1.6rem;
+    padding: 0 1.2rem;
     cursor: pointer;
-    border-bottom: 3px solid #ddd;
+    border-bottom: 3px solid rgba(0,0,0,0.1);
     transition-duration: 0.3s;
 }
 
@@ -173,7 +201,7 @@
     cursor: pointer;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
     transition-duration: 0.3s;
-    animation-duration: 1s;
+    animation-duration: 0.6s;
     animation-name: scaleIn;
 }
 
@@ -231,3 +259,24 @@
     }
 }
 
+@media only screen and (max-width: 768px) {
+
+    .profile {
+        min-width: unset;
+        width: 52px;
+        overflow: hidden; 
+    }
+
+    .logo {
+        width: 52px;
+    }
+
+    .roomCard, .addCardContainer {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .dashboardNav {
+        margin: 0 auto;
+    }
+}
