@@ -73,7 +73,7 @@
 }
 
 .profileNav li {
-    color: #999;
+    color: #777;
     font-size: 1.8rem;
     font-weight: 400;
     line-height: 52px;
@@ -226,6 +226,56 @@
     left: 2rem;
     bottom: 4rem;
 }
+
+#sideNavContainer {
+    width: 300px;
+    background-color: rgba(255,255,255,0.4);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 0 0 20px;
+}
+
+.sideNav {
+    margin-top: 76px;
+}
+
+.sideNav li {
+    color: #777;
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 52px;
+    cursor: pointer;
+    padding: 0 4.8rem;
+    transition-duration: 0.3s;
+    margin-bottom: 20px;
+}
+
+.sideNav li:hover {
+    color: var(--main-color);
+    font-weight: 600;
+    transition-duration: 0.3s;
+}
+
+.sideNav li.active {
+    color: var(--main-color);
+    font-weight: 600;
+    border-right: 4px solid var(--main-color);
+    transition-duration: 0.3s;
+}
+
+.backDashboard {
+    margin-bottom: 40px !important;
+}
+
+.roomDashboard {
+    width: calc(100% - 300px);
+    position: fixed;
+    top: 100px;
+    right: 0;
+}
+
 
 @keyframes expandIn {
     from {
