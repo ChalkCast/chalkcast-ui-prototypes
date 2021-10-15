@@ -164,9 +164,9 @@ select {
   font-weight: 400;
   box-shadow: 0 5px 15px #5DC1B860;
   text-align: center;
-  width: auto;
   opacity: 1;
   transition-duration: 0.5s;
+  color: #fff;
 }
 
 .button:hover {

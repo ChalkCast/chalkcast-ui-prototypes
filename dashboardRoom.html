@@ -31,21 +31,27 @@
         </div>
     </div>
 
+    <div id="sideNavButton" onclick="toggleSideNav()"></div>
+    <div id="sideNavOverlay" onclick="toggleSideNav()"></div>
+
     <div id="sideNavContainer">
         <div class="logo"></div>
         <ul class="sideNav">
             <li class="backDashboard">Dashboard</li>
-            <li class="active">Join</li>
-            <li>Attendance</li>
+            <li>Join</li>
+            <li class="active">Attendance</li>
             <li>Roster</li>
-            <li>Settings</li>
+            <li id="settingsNav">Settings</li>
         </ul>
     </div>
+
+
     <div class="roomDashboard">
         <div class="container">
-            <h2 class="true-teal align-center">Join <strong>Geometry 101</strong></h2>
+            <h2 class="true-teal align-left" style="float: left;">Attendance</strong></h2>
+            <div class="button downloadCSV">Download CSV</div>
             <div class="clear-40" ></div>
-            
+            <img style="width: 100%; border-radius: 24px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1)" src="./images/attendanceChart.png"/>
        
         </div>   
     </div>
@@ -76,6 +82,11 @@
 
          function toggleProfileNav() {
             document.getElementById('profileMenu').classList.toggle('active');
+         }
+
+         function toggleSideNav() {
+            document.getElementById('sideNavContainer').classList.toggle('active');
+            document.getElementById('sideNavOverlay').classList.toggle('active');
          }
      </script>
     </body>

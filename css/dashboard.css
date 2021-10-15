@@ -59,6 +59,7 @@
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
     background-color: #fff;
     transition-duration: 0.3s;
+    z-index: 2;
 }
 
 #profileMenu.active {
@@ -196,7 +197,7 @@
     margin-right: 1%;
     margin-top: 1%;
     border-radius: 24px;
-    background: radial-gradient(rgb(11, 66, 61) 0%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(#429b97 0%, #0b3f42 100%);
     background-size: cover;
     cursor: pointer;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
@@ -229,13 +230,49 @@
 
 #sideNavContainer {
     width: 300px;
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     padding: 20px 0 0 20px;
+    z-index: 3;
+    transition-duration: 0.3s;
 }
+
+#sideNavButton {
+    position: fixed;
+    top: 32px;
+    left: 28px;
+    height: 52px;
+    width: 52px;
+    background-image: url('../images/icons/hamburger.svg');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#sideNavOverlay {
+    background-color: rgba(0,0,0,0.4);
+    width: 0;
+    opacity: 0;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    cursor: pointer;
+    display: none;
+    transition-duration: 0.3s;
+}
+
+#sideNavOverlay.active {
+    display: block;
+    opacity: 1;
+    transition-duration: 0.3s;
+}
+
 
 .sideNav {
     margin-top: 76px;
@@ -265,6 +302,11 @@
     transition-duration: 0.3s;
 }
 
+#settingsNav {
+    background: url('../images/icons/settingsTeal.svg') no-repeat 0.4rem center;
+    background-size: 40px;
+}
+
 .backDashboard {
     margin-bottom: 40px !important;
 }
@@ -274,6 +316,14 @@
     position: fixed;
     top: 100px;
     right: 0;
+}
+
+.downloadCSV {
+    width: fit-content;
+    background-image: url('../images/true-icons/buttons/csv.svg');
+    background-repeat: no-repeat;
+    float: right;
+    padding: 0 20px 0 44px;
 }
 
 
@@ -309,16 +359,22 @@
     }
 }
 
+@media only screen and (max-width: 1280px) {
+
+    .roomCard, .addCardContainer {
+        width: 48%;
+        margin-bottom: 20px;
+        margin-right: 1%;
+    }
+
+}
+
 @media only screen and (max-width: 768px) {
 
     .profile {
         min-width: unset;
         width: 52px;
         overflow: hidden; 
-    }
-
-    .logo {
-        width: 52px;
     }
 
     .roomCard, .addCardContainer {
@@ -328,5 +384,23 @@
 
     .dashboardNav {
         margin: 0 auto;
+    }
+
+    #sideNavContainer {
+        left: -300px;
+    }
+
+    #sideNavContainer.active {
+        left: 0px;
+        z-index: 3;
+        transition-duration: 0.3s;
+    }
+
+    .roomDashboard {
+        width: 100%;
+    }
+
+    .downloadCSV {
+        display: none;
     }
 }
