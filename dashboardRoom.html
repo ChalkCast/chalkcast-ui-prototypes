@@ -38,21 +38,32 @@
         <div class="logo"></div>
         <ul class="sideNav">
             <a href="./dashboard.html"><li id="backNav"class="backDashboard">Dashboard</li></a>
-            <li id="joinNav">Join</li>
-            <li id="attendanceNav" class="active">Attendance</li>
-            <li id="settingsNav">Settings</li>
+            <li id="joinNav" class="active" onclick="dashboardNav('join')">Join</li>
+            <li id="attendanceNav"  onclick="dashboardNav('attendance')">Attendance</li>
+            <li id="settingsNav" onclick="dashboardNav('settings')">Settings</li>
         </ul>
     </div>
 
 
     <div class="roomDashboard">
-        <div class="container">
-            <h2 class="true-teal align-left" style="float: left;">Attendance</strong></h2>
+        <div class="container" id="join">
+            <h2 class="true-teal align-left" style="float: left;">Join <strong>Geometry 101</strong></h2>
+        </div> 
+
+        <div class="container" id="attendance" style="display: none">
+            <h2 class="true-teal align-left" style="float: left;">Attendance</h2>
             <div class="button downloadCSV">Download CSV</div>
             <div class="clear-40" ></div>
             <img style="width: 100%; border-radius: 24px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1)" src="./images/attendanceChart.png"/>
-       
-        </div>   
+        </div>
+        
+        <div class="container" id="roomSettings" style="display: none">
+            <h2 class="true-teal align-left" style="float: left;">Settings</h2>
+            <div class="clear-40"></div>
+            <ul class="dashboardNav">
+                <li class="active">Room</li><li>Security</li><li>Guests</li>  
+            </ul>
+        </div> 
     </div>
     <div class="clear-20" ></div>
 
@@ -65,18 +76,23 @@
 
         let popSound = new Audio('./sounds/pop.mp3');
 
-         function addNewRoom() {
-            let roomNav = document.getElementById('roomNav')
-            let room = document.createElement('li');
-            room.className = "roomCard";
-            let roomName = document.createElement('h4');
-            roomName.innerHTML = "Geometry 101";
-            let roomDetails = document.createElement('h5');
-            roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em>";
-            room.appendChild(roomName);
-            room.appendChild(roomDetails);
-            roomNav.insertBefore(room, roomNav.children[1]);
-            popSound.play();
+         function dashboardNav(panel) {
+            document.getElementById('joinNav').className = "";
+            document.getElementById('attendanceNav').className = "";
+            document.getElementById('settingsNav').className = "";
+            document.getElementById(panel+'Nav').className = "active";
+
+            document.getElementById('join').style.display = "none";
+            document.getElementById('attendance').style.display = "none";
+            document.getElementById('roomSettings').style.display = "none";
+            if (panel === 'settings') {
+                document.getElementById('roomSettings').style.display = "block";
+            }
+            else {
+                document.getElementById(panel).style.display = "block";
+            }
+
+            toggleSideNav();
          }
 
          function toggleProfileNav() {
@@ -85,7 +101,7 @@
 
          function toggleSideNav() {
             document.getElementById('sideNavContainer').classList.toggle('active');
-            document.getElementById('sideNavOverlay').classList.toggle('active');
+            //document.getElementById('sideNavOverlay').classList.toggle('active');
          }
      </script>
     </body>
