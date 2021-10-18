@@ -43,9 +43,9 @@
         <ul id="roomNav" class="roomNav">
             <li class="addCardContainer">
                 <div class="addCard" onclick="addNewRoom()"></div>
-            </li>
+            </li></a>
             <li class="roomCard">
-                <h4>Geometry 101</h4>
+                <a href="./dashboardRoom.html"><h4>Geometry 101</h4></a>
                 <h5><strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em></h5>
             </li>
         </ul>
@@ -67,9 +67,12 @@
             room.className = "roomCard";
             let roomName = document.createElement('h4');
             roomName.innerHTML = "Geometry 101";
+            let roomLink = document.createElement('a');
+            roomLink.href = "./dashboardRoom.html";
             let roomDetails = document.createElement('h5');
             roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em>";
-            room.appendChild(roomName);
+            roomLink.appendChild(roomName);
+            room.appendChild(roomLink);
             room.appendChild(roomDetails);
             roomNav.insertBefore(room, roomNav.children[1]);
             popSound.play();
