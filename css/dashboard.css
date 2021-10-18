@@ -22,7 +22,9 @@
     min-width: 52px;
     border-radius: 30px;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-    float: right;
+    position: fixed;
+    top: 20px;
+    right: 20px;
     color: var(--main-color);
     font-size: 1.8rem;
     font-weight: 600;
@@ -134,7 +136,6 @@
     margin: 0;
     padding: 0;
     margin-bottom: 40px;
-    width: 340px;
 }
 
 .dashboardNav li {
@@ -142,7 +143,7 @@
     color: #999;
     font-size: 2.4rem;
     line-height: 4.8rem;
-    padding: 0 1.2rem;
+    padding: 0 3.6rem;
     cursor: pointer;
     border-bottom: 3px solid rgba(0,0,0,0.1);
     transition-duration: 0.3s;
@@ -228,6 +229,12 @@
     bottom: 4rem;
 }
 
+
+
+
+
+/* Dashboard Side Nav */
+
 #sideNavContainer {
     width: 300px;
     background-color: rgba(255,255,255,0.9);
@@ -273,7 +280,6 @@
     transition-duration: 0.3s;
 }
 
-
 .sideNav {
     margin-top: 76px;
 }
@@ -303,9 +309,46 @@
 }
 
 #settingsNav {
-    background: url('../images/icons/settingsTeal.svg') no-repeat 0.4rem center;
-    background-size: 40px;
+    background: url('../images/icons/settingsGray.svg') no-repeat 0.4rem center;
+    background-size: 36px;
 }
+
+#settingsNav.active, #settingsNav:hover {
+    background: url('../images/icons/settingsTeal.svg') no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#joinNav {
+    background: url('../images/icons/logoutGray.svg') no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#joinNav.active, #joinNav:hover {
+    background: url('../images/icons/logoutTeal.svg')no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#attendanceNav {
+    background: url('../images/icons/attendanceGray.svg') no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#attendanceNav.active, #attendanceNav:hover {
+    background: url('../images/icons/attendanceTeal.svg')no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#backNav {
+    background: url('../images/icons/backGray.svg') no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#backNav.active, #backNav:hover {
+    background: url('../images/icons/backTeal.svg')no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+
 
 .backDashboard {
     margin-bottom: 40px !important;
@@ -320,7 +363,7 @@
 
 .downloadCSV {
     width: fit-content;
-    background-image: url('../images/true-icons/buttons/csv.svg');
+    background-image: url('../images/true-icons/buttons/csv.svg'), linear-gradient(117.46deg, rgb(134, 208, 202) 11.44%, rgb(53, 177, 166) 74.61%);
     background-repeat: no-repeat;
     float: right;
     padding: 0 20px 0 44px;
@@ -367,6 +410,20 @@
         margin-right: 1%;
     }
 
+    #sideNavContainer {
+        left: -300px;
+    }
+
+    #sideNavContainer.active {
+        left: 0px;
+        z-index: 3;
+        transition-duration: 0.3s;
+    }
+
+    .roomDashboard {
+        width: 100%;
+    }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -384,20 +441,11 @@
 
     .dashboardNav {
         margin: 0 auto;
+        width: 360px;
     }
 
-    #sideNavContainer {
-        left: -300px;
-    }
-
-    #sideNavContainer.active {
-        left: 0px;
-        z-index: 3;
-        transition-duration: 0.3s;
-    }
-
-    .roomDashboard {
-        width: 100%;
+    .dashboardNav li {
+        padding: 0 1.2rem;
     }
 
     .downloadCSV {
