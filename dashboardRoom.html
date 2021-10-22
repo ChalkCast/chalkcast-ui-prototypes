@@ -52,7 +52,14 @@
 
         <div class="container" id="attendance" style="display: none">
             <h2 class="true-teal align-left" style="float: left;">Attendance</h2>
-            <div class="button downloadCSV">Download CSV</div>
+            <div id="downloadCSV" class="button downloadCSV" onclick="downloadCSV()">Download CSV</div>
+            <div id="loader" class="light attendanceLoader" style="display: none">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="clear-40" ></div>
             <img style="width: 100%; border-radius: 24px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1)" src="./images/attendanceChart.png"/>
         </div>
@@ -92,6 +99,15 @@
                 document.getElementById(panel).style.display = "block";
             }
 
+         }
+
+         function downloadCSV() {
+            document.getElementById('downloadCSV').style.display = "none";
+            document.getElementById('loader').style.display = "inline-block";
+            setTimeout( function() {
+                document.getElementById('downloadCSV').style.display = "inline-block";
+            document.getElementById('loader').style.display = "none";
+            }, 3000);
          }
 
          function toggleProfileNav() {

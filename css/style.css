@@ -2542,6 +2542,13 @@ div.flex{
   background: var(--main-color) !important;
 }
 
+.attendanceLoader {
+  position: unset !important;  
+  float: right !important;
+  left: unset !important;
+  top: unset !important;
+  margin: 12px 28px 0 0;
+}
 
 
 
