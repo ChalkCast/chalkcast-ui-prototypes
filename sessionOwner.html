@@ -55,6 +55,16 @@
         <div id="exit"></div>
       </div>
 
+      <div id="smallPanel">
+        <h4 class="title" id="smallPanelTitle">Smart shape tool</h4>
+        <div class="exit" onclick="toggleSmallPanel('remove')"></div>
+        <div class="nudgeSection">
+          <img src="./images/smartShape.png" style="width: 100%; border-radius: 28px;" />
+          <p>This tool predicts what shape you are trying to draw and automatically beautifies it (Works for lines, circles, squares, polygons, and arrows).</p>
+          <div class="feature">Don't show this message again</div><div id="switch1" class="switch off" onclick="toggleSwitch('1')"></div>
+        </div>
+      </div>
+
       <div id="nudgePanel">
         <h4 class="title" id="nudgeTitle">Nudge</h4>
         <div class="exit" onclick="toggleNudgePanel()"></div>
@@ -68,14 +78,14 @@
         </div>
       </div>
 
-      <div id="smallPanel">
+      <!-- <div id="smallPanel">
         <h4 class="title" id="smallPanelTitle">Removing guest</h4>
         <div class="exit" onclick="toggleSmallPanel('remove')"></div>
         <div class="nudgeSection">
         <p>This guest will not be allowed back in this session.</p>
           <div class="button boot" onclick="toggleSmallPanel('remove')">Remove</div>
         </div>
-      </div>
+      </div> -->
       
       <div id="panel">
           <div id="chatPanel" style="display: none">
@@ -220,6 +230,7 @@
           <li id="line" onclick="changeTool('line')"></li>
           <li id="square" onclick="changeTool('square')"></li>
           <li id="circle" onclick="changeTool('circle')"></li>
+          <li id="smartShape" onclick="changeTool('smartShape')"></li>
           <li id="text" onclick="changeTool('text')"></li>
           <li id="eraser" onclick="changeTool('eraser')"></li>
 

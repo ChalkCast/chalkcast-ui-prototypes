@@ -1400,12 +1400,19 @@ nav .button-collapse {
   background-image: url('../images/icons/square.svg');
 }
 
+#smartShape {
+  background-color: rgba(0,0,0,0.6);
+  background-image: url('../images/true-icons/chalkboard/star.svg');
+  background-size: 70% 70%;
+}
+
+
 #draw {
   background-color: rgba(0,0,0,0.6);
   background-image: url('../images/icons/draw.svg');
 }
 
-#eraser.active, #clear.active, #text.active, #line.active, #circle.active, #square.active, #draw.active, #nightMode.active, #dayMode.active {
+#eraser.active, #clear.active, #text.active, #line.active, #circle.active, #square.active, #draw.active, #nightMode.active, #dayMode.active, #smartShape.active {
   background-color: var(--main-color) !important;
 }
 
@@ -2259,7 +2266,7 @@ nav .button-collapse {
 #smallPanel {
   position: fixed;
   top: 100px;
-  left: calc(50% - 200px); 
+  left: calc(50% - 328px); 
   width: 400px;
   height: auto;
   background-color: rgba(0,0,0,0.6);
@@ -2272,7 +2279,7 @@ nav .button-collapse {
 }
 
 #smallPanel.active {
-  z-index: 4;
+  z-index: 6;
   opacity: 1;
   transition-duration: 0.5s;
 }

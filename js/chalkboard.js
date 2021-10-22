@@ -43,6 +43,21 @@ function initializePaper() {
     }
     chalk.onMouseUp = function(event) {
         path.simplify();
+    }
+
+    //Smart shape tool
+    smartShape = new Tool();
+    smartShape.onMouseDown = function(event) {
+        path = new paper.Path();
+        path.strokeColor = strokeColor;
+        path.strokeWidth = strokeSize;
+        path.add(event.point);
+    }
+    smartShape.onMouseDrag = function(event) {
+        path.add(event.point);
+    }
+    smartShape.onMouseUp = function(event) {
+        path.simplify();
 
         //Recognition tests / features
         //Is it a closed shape? (Returns true or false)
@@ -403,8 +418,8 @@ function getCorners(path) {
 	//var timeThreshold = 0.9;
 	// Find point candidates
 
-    var corner = new paper.Path.Circle(new paper.Point(Sx[0], Sy[0]), 8);
-    corner.fillColor = 'red';
+    // var corner = new paper.Path.Circle(new paper.Point(Sx[0], Sy[0]), 8);
+    // corner.fillColor = 'red';
     corners++;
 
 	for (i = w; i < Sx.length - w; i++) {
@@ -426,8 +441,8 @@ function getCorners(path) {
             //path.segments[i].
             //subStrokes.push()
             //(subStrokes);
-            var corner = new paper.Path.Circle(new paper.Point(Sx[i], Sy[i]), 8);
-            corner.fillColor = 'red';
+            // var corner = new paper.Path.Circle(new paper.Point(Sx[i], Sy[i]), 8);
+            // corner.fillColor = 'red';
             corners++;
 
 
@@ -623,7 +638,7 @@ function toggleStrokeColors(color) {
 
 //Change tools
 function changeTool(tool) {
-    let tools = ['draw','line','square','circle','text','eraser'];
+    let tools = ['draw','line','square','circle','text','eraser','smartShape'];
     for (let i = 0; i < tools.length; i++) {
         document.getElementById(tools[i]).className = "";
     }
@@ -651,6 +666,11 @@ function changeTool(tool) {
     else if (tool === 'eraser') {
         eraser.activate();
         document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursorEraser.svg') 0 32, pointer";
+    }
+    else if (tool === 'smartShape') {
+        smartShape.activate();
+        document.getElementById('chalkboard').style.cursor = "url('./images/icons/sketchCursor.svg') 0 32, pointer";
+        document.getElementById('smallPanel').className = "active";
     }
 
     document.getElementById(tool).className = "active";
