@@ -46,7 +46,7 @@
             </li></a>
             <li class="roomCard">
                 <a href="./dashboardRoom.html"><h4>Geometry 101</h4></a>
-                <h5><strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em></h5>
+                <div class="guestPreview"></div> <h5><strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Nov 4</strong></em></h5>
             </li>
         </ul>
     </div>   
@@ -69,10 +69,13 @@
             roomName.innerHTML = "Geometry 101";
             let roomLink = document.createElement('a');
             roomLink.href = "./dashboardRoom.html";
+            let guestPreview = document.createElement('div');
+            guestPreview.className = "guestPreview";
             let roomDetails = document.createElement('h5');
-            roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em>Last Session <strong>Nov 4</strong></em>";
+            roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Nov 4</strong></em>";
             roomLink.appendChild(roomName);
             room.appendChild(roomLink);
+            room.appendChild(guestPreview);
             room.appendChild(roomDetails);
             roomNav.insertBefore(room, roomNav.children[1]);
             popSound.play();
