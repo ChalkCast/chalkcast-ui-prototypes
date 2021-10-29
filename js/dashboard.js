@@ -48,7 +48,7 @@ function addNewRoom() {
         toggleGuestModal();
     };
     let roomDetails = document.createElement('h5');
-    roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Oct 24</strong></em>";
+    roomDetails.innerHTML = "<strong>24</strong>  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Oct 27</strong></em>";
 
     roomLink.appendChild(roomName);
     room.appendChild(roomLink);
