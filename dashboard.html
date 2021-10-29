@@ -46,44 +46,24 @@
             </li></a>
             <li class="roomCard">
                 <a href="./dashboardRoom.html"><h4>Geometry 101</h4></a>
-                <div class="guestPreview"></div> <h5><strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Nov 4</strong></em></h5>
+                <div class="guestPreview" onmouseenter="toggleGuestModal()" onmouseleave="toggleGuestModal()"></div> <h5><strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Oct 24</strong></em></h5>
             </li>
         </ul>
     </div>   
     <div class="clear-20" ></div>
+
+    <div id="guestModal">
+        <ul id="guestModalList">
+            
+        </ul>
+    </div>
 
      <!--Import jQuery before materialize.js-->
      <!--JS Frameworks-->
      <script src="./js/paper-full.min.js"></script>
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-     <script>
-
-        let popSound = new Audio('./sounds/pop.mp3');
-
-         function addNewRoom() {
-            let roomNav = document.getElementById('roomNav')
-            let room = document.createElement('li');
-            room.className = "roomCard";
-            let roomName = document.createElement('h4');
-            roomName.innerHTML = "Geometry 101";
-            let roomLink = document.createElement('a');
-            roomLink.href = "./dashboardRoom.html";
-            let guestPreview = document.createElement('div');
-            guestPreview.className = "guestPreview";
-            let roomDetails = document.createElement('h5');
-            roomDetails.innerHTML = "<strong>24</strong> Guests  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Nov 4</strong></em>";
-            roomLink.appendChild(roomName);
-            room.appendChild(roomLink);
-            room.appendChild(guestPreview);
-            room.appendChild(roomDetails);
-            roomNav.insertBefore(room, roomNav.children[1]);
-            popSound.play();
-         }
-
-         function toggleProfileNav() {
-            document.getElementById('profileMenu').classList.toggle('active');
-         }
-     </script>
+     <script src="./js/dashboard.js"></script>        
+     
     </body>
 </html>
