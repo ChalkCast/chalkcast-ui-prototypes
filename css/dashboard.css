@@ -271,6 +271,13 @@
     width: 100%;
     padding: 0 20px;
     margin-bottom: 4px;
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+#guestModalList li:hover {
+    transform: scale(1.05);
+    transition-duration: 0.1s;
 }
 
 .guestImage {
