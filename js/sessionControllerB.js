@@ -134,7 +134,7 @@ window.onload = (event) => {
     }
 
      //Chalkboard
-     toggleChalkboard();
+     //toggleChalkboard();
 };
 
 //Toggle video on/off
@@ -339,10 +339,16 @@ function togglePanel(panel) {
         if (panel === 'chat') {
             document.getElementById('chatThread').className = '';
         }
+
+        document.getElementById('tileList').style.left = "120px";
+        document.getElementById('tileList').style.width = "100%";
     }
     else {
         document.getElementById('panel').className = 'active';
         document.getElementById(panel+'Panel').style.display = 'block';
+
+        document.getElementById('tileList').style.left = "436px";
+        document.getElementById('tileList').style.width = "calc(100% - 300px)";
     }
 }
 

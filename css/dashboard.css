@@ -298,6 +298,18 @@
     margin-left: 8px;
 }
 
+.lastSession {
+    float: right;
+    margin-right: 40px;
+    margin-top: 10px;
+    font-style: italic;
+    display: inline-block;
+}
+
+.roomDetails {
+    display: inline-block;
+}
+
 /* Dashboard Side Nav */
 
 #sideNavContainer {

@@ -39,7 +39,7 @@ function addNewRoom() {
     let room = document.createElement('li');
     room.className = "roomCard";
     let roomName = document.createElement('h4');
-    roomName.innerHTML = "Geometry 101";
+    roomName.innerHTML = "Organic Chemistry";
     let roomLink = document.createElement('a');
     roomLink.href = "./dashboardRoom.html";
     let guestPreview = document.createElement('div');
@@ -48,12 +48,19 @@ function addNewRoom() {
         toggleGuestModal();
     };
     let roomDetails = document.createElement('h5');
-    roomDetails.innerHTML = "<strong>24</strong>  &nbsp;&nbsp;&nbsp;&nbsp;  <em><strong>Oct 27</strong></em>";
+    roomDetails.innerHTML = "<strong>18</strong>"
+    roomDetails.className = "roomDetails";
+
+    let lastSession = document.createElement('h5');
+    lastSession.innerHTML = "MONDAY";
+    lastSession.className = "lastSession";
+
 
     roomLink.appendChild(roomName);
     room.appendChild(roomLink);
     room.appendChild(guestPreview);
     room.appendChild(roomDetails);
+    room.appendChild(lastSession);
     roomNav.insertBefore(room, roomNav.children[1]);
 
     popSound.play();

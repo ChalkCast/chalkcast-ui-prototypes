@@ -1660,6 +1660,7 @@ nav .button-collapse {
 #tileList {
   display: flex;
   flex-wrap: wrap;
+  transition-duration: 0.3s;
 }
 
 .streamContainer {
@@ -1936,8 +1937,8 @@ nav .button-collapse {
 
 #panel {
   position: fixed;
-  top: 2vh;
-  left: 90px;
+  top: 12px;
+  left: 120px;
   width: 0px;
   height: 96vh;
   background-color: rgba(0,0,0,0.7);
