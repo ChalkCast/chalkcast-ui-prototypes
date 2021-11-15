@@ -44,23 +44,26 @@ function addNewRoom() {
     roomLink.href = "./dashboardRoom.html";
     let guestPreview = document.createElement('div');
     guestPreview.className = "guestPreview";
-    guestPreview.onclick = function() {
+    guestPreview.onmouseenter = function() {
+        toggleGuestModal();
+    };
+    guestPreview.onmouseleave = function() {
         toggleGuestModal();
     };
     let roomDetails = document.createElement('h5');
     roomDetails.innerHTML = "<strong>18</strong>"
     roomDetails.className = "roomDetails";
 
-    let lastSession = document.createElement('h5');
-    lastSession.innerHTML = "MONDAY";
-    lastSession.className = "lastSession";
+    // let lastSession = document.createElement('h5');
+    // lastSession.innerHTML = "MONDAY";
+    // lastSession.className = "lastSession";
 
 
     roomLink.appendChild(roomName);
     room.appendChild(roomLink);
     room.appendChild(guestPreview);
     room.appendChild(roomDetails);
-    room.appendChild(lastSession);
+    // room.appendChild(lastSession);
     roomNav.insertBefore(room, roomNav.children[1]);
 
     popSound.play();
