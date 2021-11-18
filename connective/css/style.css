@@ -1977,3 +1977,63 @@ nav .button-collapse {
   display: block; 
   margin: 0 auto;
 }
+
+#demoContainer {
+  width: 100%;
+  height: 640px;
+  background-image: url('../images/starcraft.jpg');
+  background-size: cover;
+  border-radius: 12px;
+}
+
+.demoToolbar {
+  margin: 0;
+  float: left;
+  width: 60px;
+  height: 100%;
+  background-color:rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+#streams {
+  margin: 0;
+  float: right;
+  height: 100%;
+  width: 240px;
+  background-color:rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+#stream1 {
+  height: 160px;
+  width: 240px;
+  background-color: rgba(0,0,0,0.3);
+  background-size: cover;
+  border-radius: 12px;
+}
+
+#stream2 {
+  height: 160px;
+  width: 240px;
+  background-image: url('../images/people/1.jpg');
+  background-size: cover;
+  border-radius: 12px;
+}
+
+#stream3 {
+  height: 160px;
+  width: 240px;
+  background-image: url('../images/people/2.jpg');
+  background-size: cover;
+  border-radius: 12px;
+}
+
+#stream4 {
+  height: 160px;
+  width: 240px;
+  background-image: url('../images/people/3.jpg');
+  background-size: cover;
+  border-radius: 12px;
+}
