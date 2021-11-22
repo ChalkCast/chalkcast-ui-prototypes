@@ -1,0 +1,24 @@
+#main-progressbar-container {
+    position: fixed;
+    left: 48;
+    top: 20vh;
+    width: 2px;
+    height: 60vh;
+    background-color: rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+  
+  #main-progressbar {
+    width: 2px;
+    height: 0%;
+    background-color: var(--main-color);
+    -webkit-transition: height .5s ease;
+    -o-transition: height .5s ease;
+    transition: height .5s ease;
+  }
+
+  @media only screen and (max-width: 992px) {
+    #main-progressbar-container {
+        display: none;
+    }
+  }

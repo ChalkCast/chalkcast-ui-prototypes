@@ -10,7 +10,7 @@
 	}
 
 	#Layer_2 {
-		stroke-dasharray: 300; stroke-dashoffset: 200000; animation: dash 999s linear forwards;
+		stroke-dasharray: 300; stroke-dashoffset: 200000; animation: dash 900s linear forwards infinite;
 	}
 </style>
 <g id="Layer_2">

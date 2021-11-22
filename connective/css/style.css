@@ -84,18 +84,24 @@ ul ul {
 }
 
 .button {
-  background-color: var(--main-color);
-  border-radius: 20px;
+  background: linear-gradient(45deg, var(--main-color), #9AA4FC);
+  border-radius: 8px;
   height: 40px;
   line-height: 40px;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
-  box-shadow: 0 5px 15px var(--main-color);
+  font-weight: 400;
   text-align: center;
   width: 200px;
-  opacity: 0.8;
+  opacity: 0.9;
   margin: 0 auto;
   position: relative;
+  transition-duration: 0.3s;
+  color: #fff;
+}
+
+.button.inactive {
+  background: rgba(0,0,0,0.6);
 }
 
 .button.community {
@@ -110,6 +116,8 @@ ul ul {
 .button:hover {
   opacity: 1;
   cursor: pointer;
+  transform: scale(1.05);
+  transition-duration: 0.3s;
 }
 
 body {
@@ -486,13 +494,13 @@ nav .button-collapse:hover {
   }
 
   nav ul a:hover {
-    color: #eee;
+    color: var(--main-color);
     opacity: 1;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--main-color);
   }
 
   nav ul a.active {
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--main-color);
     opacity: 1;
   }
 
@@ -1197,11 +1205,11 @@ nav .button-collapse {
   transition-duration: 0.5s;
 }
 
-.audioToggle.off {
+.audio {
   background-image: url('../images/icons/audioOff.svg');
 }
 
-.videoToggle.off {
+.video {
   background-image: url('../images/icons/videoOff.svg');
 }
 
@@ -1944,6 +1952,10 @@ nav .button-collapse {
   .down {
     display: none;
   }
+
+  #demo {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -1981,7 +1993,7 @@ nav .button-collapse {
 #demoContainer {
   width: 100%;
   height: 640px;
-  background-image: url('../images/starcraft.jpg');
+  background-image: url('../images/baseball.jpg');
   background-size: cover;
   border-radius: 12px;
 }
@@ -1994,6 +2006,35 @@ nav .button-collapse {
   background-color:rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   border-radius: 12px;
+}
+
+.demoToolbar li {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.demoToolbar li:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
+.screenshare {
+  background-image: url('../images/icons/screenshare.svg');
+}
+
+.chat {
+  background-image: url('../images/icons/chat.svg');
+}
+
+.sketch {
+  background-image: url('../images/icons/sketch.svg');
+}
+
+.settings {
+  background-image: url('../images/icons/settings.svg');
 }
 
 #streams {
@@ -2037,3 +2078,4 @@ nav .button-collapse {
   background-size: cover;
   border-radius: 12px;
 }
+
