@@ -99,6 +99,15 @@ select {
   border-radius: 24px;
 }
 
+#lifeCanvas {
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+}
+
 #score {
   position: fixed;
   right: 12px;

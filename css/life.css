@@ -1,0 +1,23 @@
+body {
+    background: url('../images/bg.jpg');
+    background-size: cover;
+}
+
+#lifeCanvas {
+    position: fixed;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+}
+
+#generations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 40px;
+    z-index: 2;
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+    text-transform: uppercase;
+}
