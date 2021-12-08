@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/style.css" >
     <link rel="stylesheet" href="./css/styleB.css" >
     <link rel="stylesheet" href="./css/styleBubbles.css" >
+    <link rel="stylesheet" href="./css/styleTitle.css" >
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
@@ -39,6 +40,7 @@
             <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
             <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
             <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
+            <li id="recordToggle" onclick="toggleInformation('recordToggle')"></li>
         </ul>
 
         <ul class="toolbar">
@@ -47,12 +49,10 @@
           <li id="chat" onclick="togglePanel('chat')"><div id="newChatIndicator">3</div></li>
           <li id="groups"></li>
           <li id="chalk" onclick="toggleChalkboard()"></li>
-          <!--<li id="quiz" onclick="togglePanel('quiz')"></li> -->
+          <li id="quiz" onclick="togglePanel('quiz')"></li>
+          <li id="notes" onclick="togglePanel('notes')"></li>
           <li id="settings" onclick="togglePanel('settings')"></li>
-          
         </ul>
-
-        <div id="exit"></div>
       </div>
 
       <div id="smallPanel">
@@ -89,11 +89,18 @@
       </div> -->
       
       <div id="panel">
+          <div id="notesPanel" style="display: none">
+            <h4 class="title">Notes</h4>
+            <div class="exit" onclick="togglePanel('notes')"></div>
+            <textarea id="notesField"></textarea>
+          </div>
+
           <div id="chatPanel" style="display: none">
             <h4 class="title">Chat</h4>
             <div class="exit" onclick="togglePanel('chat')"></div>
             <ul id="chatList">
                 <li onclick="toggleThread('Everyone')">Everyone</li>
+                
             </ul>
           </div>
 
@@ -257,6 +264,12 @@
       <div id="nextButton" onclick="nextScreen()"></div>
 
       <div id="expandedTile"></div>
+
+      <!-- <div id="sessionTitle">12/8 Session</div> -->
+      <input id="sessionTitleField" placeholder="12/8 Session"></input>
+      <div id="sessionTime"></div>
+      <div id="exit"></div>
+
       <ul id="tileList" class="streamContainer">
       </ul>      
 
@@ -272,5 +285,33 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
      <script src="./js/chalkboard.js"></script>
      <script src="./js/sessionControllerB.js"></script>
+     <script>
+        document.getElementById('sessionTitleField').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.getElementById("sessionTitleField").disabled = true;    
+                document.getElementById("sessionTitleField").disabled = false;
+            }
+        });
+
+        function updateTime() {
+            let today = new Date();
+            let hours = today.getHours();
+            let half = "AM"
+            if (today.getHours() > 12) {
+                hours = today.getHours() - 12;
+                half = "PM"
+            }
+            let time = hours + ":" + today.getMinutes() + " " +half;
+            document.getElementById('sessionTime').textContent = time;
+        }
+        
+        setInterval(function(){ updateTime() }, 1000);
+        // document.getElementById('notesField').addEventListener('keypress', function (e) {
+        //     if (e.key === 'Enter') {
+        //         document.getElementById("notesField").disabled = true;    
+        //         document.getElementById("notesField").disabled = false;
+        //     }
+        // });
+     </script>
     </body>
 </html>

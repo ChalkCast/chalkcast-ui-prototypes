@@ -752,7 +752,7 @@ function toggleTemplateMenu() {
 }
 
 function toggleTemplateCategory(category) {
-    let categories = ['Math', 'Language', 'Geography', 'Science', 'Music'];
+    let categories = ['Math', 'Language', 'Geography', 'Science', 'Music','Business'];
     for (let i = 0; i < categories.length; i++) {
         document.getElementById(categories[i]+'Category').className = '';
         document.getElementById(categories[i]).style.display = 'none';

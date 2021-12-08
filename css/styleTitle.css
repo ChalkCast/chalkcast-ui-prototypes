@@ -1,0 +1,70 @@
+#tileList {
+    margin-top: 88px;
+  }
+
+#sessionTitle {
+    position: fixed;
+    left: 128px;
+    top: 24px;
+    font-size: 3.2rem;
+    cursor: pointer;
+}
+
+#sessionTitleField {
+    position: fixed;
+    left: 120px;
+    top: 24px;
+    font-size: 3.2rem;
+    cursor: pointer;
+    width: 30%;
+    background-color: rgba(0,0,0,0);
+    color: #ddd !important;
+    font-family: 'Quicksand', sans-serif;
+}
+
+::placeholder {
+    color: #ddd !important;
+}
+
+#sessionTitleField:hover {
+    opacity: 0.8;
+    transition-duration: 0.5s;
+}
+
+#sessionTitleField:focus {
+    border: 0px solid #000 !important;
+}
+
+#sessionTime {
+    position: fixed;
+    right: 88px;
+    top: 24px;
+    font-size: 3.2rem;
+}
+
+#exit {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    bottom: unset;
+    left: unset;
+}
+
+#panel {
+    top: 84px;
+}
+
+textarea {
+    width: 100%;
+    height: 80vh;
+    background-color: rgba(0,0,0,0.2);
+    font-size: 1.8rem;
+    font-family: 'Open Sans';
+    border: 0px solid #000;
+    color: #ddd;
+    padding: 0 20px;
+}
+
+textarea:focus {
+    border: 0px solid #000;
+}

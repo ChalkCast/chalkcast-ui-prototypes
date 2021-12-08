@@ -1170,6 +1170,22 @@ nav .button-collapse {
   background-size: contain;
 }
 
+.businessModel, #businessModel {
+  background-image: url(../images/chalkboard-templates/businessModel.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.valueProp, #valueProp {
+  background-image: url(../images/chalkboard-templates/valueProp.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+
 #templateToggle {
   position: fixed;
   top: 8px;
@@ -1190,7 +1206,7 @@ nav .button-collapse {
   z-index: -1;
   opacity: 0;
   width: 580px;
-  height: 250px;
+  height: 300px;
   background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(30px);
   border-radius: 28px;
@@ -1774,6 +1790,14 @@ nav .button-collapse {
   background-image: url('../images/icons/screenshareHover.svg');
 }
 
+#recordToggle {
+  background-image: url('../images/icons/record.svg');
+}
+
+#notes {
+  background-image: url('../images/icons/notes.svg');
+}
+
 #videoToggle {
   background-image: url('../images/icons/videoOffBig.svg');
 }
@@ -1859,11 +1883,9 @@ nav .button-collapse {
 }
 
 #quiz {
-  background-image: url('../images/icons/quiz.svg');
-}
-
-#quiz:hover {
-  background-image: url('../images/icons/quizHover.svg');
+  background-image: url('../images/icons/icebreaker.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 #exit {
