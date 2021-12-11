@@ -1708,10 +1708,24 @@ nav .button-collapse {
 .lightbody {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(rgb(255, 255, 255), rgba(0, 0, 100, 0.1) 100%), linear-gradient(
+  background: linear-gradient(rgba(255, 255, 255,0.9), rgba(0, 0, 100, 0.1) 100%), linear-gradient(
     32deg, rgba(0, 255, 98, 0.3), rgba(0, 255, 0, 0) 75%), linear-gradient(
     334deg, rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0) 75%);
   background-attachment: fixed;
+  background-size: cover;
+}
+
+.imageOverlay {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.6));
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.guitar {
+  background: url('../images/people/guitar1.jpg');
+  background-size: cover;
 }
 
 #yourStream {

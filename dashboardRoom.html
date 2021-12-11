@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="lightbody">
+  <body class="guitar">
+    <div class="imageOverlay">
     <div class="header">    
         <div class="profile" onclick="toggleProfileNav()">
             <div class="profileImage"></div>
@@ -45,10 +46,9 @@
         </ul>
     </div>
 
-
     <div class="roomDashboard">
         <div class="container" id="join">
-            <h2 class="true-teal align-left" style="float: left;">Join <strong>Geometry 101</strong></h2>
+            <h2 class="true-teal align-left" style="float: left;">Join <strong>Music Theory 101</strong></h2>
         </div> 
 
         <div class="container" id="attendance" style="display: none">
@@ -64,6 +64,15 @@
             <div class="clear-40" ></div>
             <img style="width: 100%; border-radius: 24px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1)" src="./images/attendanceChart.png"/>
         </div>
+
+        <div class="container" id="sessionHistory" style="display: none">
+            <h2 class="true-teal align-left" style="float: left;">Session History</h2>
+            <div class="sessionContainer">
+
+            </div>
+
+            
+        </div>
         
         <div class="container" id="roomSettings" style="display: none">
             <h2 class="true-teal align-left" style="float: left;">Settings</h2>
@@ -74,8 +83,9 @@
         </div> 
     </div>
     <div class="clear-20" ></div>
-
-     <!--Import jQuery before materialize.js-->
+    </div>
+    </body>
+    <!--Import jQuery before materialize.js-->
      <!--JS Frameworks-->
      <script src="./js/paper-full.min.js"></script>
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -87,11 +97,13 @@
          function dashboardNav(panel) {
             document.getElementById('joinNav').className = "";
             document.getElementById('attendanceNav').className = "";
+            document.getElementById('sessionHistoryNav').className = "";
             document.getElementById('settingsNav').className = "";
             document.getElementById(panel+'Nav').className = "active";
 
             document.getElementById('join').style.display = "none";
             document.getElementById('attendance').style.display = "none";
+            document.getElementById('sessionHistory').style.display = "none";
             document.getElementById('roomSettings').style.display = "none";
             if (panel === 'settings') {
                 document.getElementById('roomSettings').style.display = "block";
@@ -120,5 +132,4 @@
             document.getElementById('sideNavOverlay').classList.toggle('active');
          }
      </script>
-    </body>
 </html>
