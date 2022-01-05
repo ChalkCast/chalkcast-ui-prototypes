@@ -148,6 +148,7 @@
     padding: 0 3.6rem;
     cursor: pointer;
     transition-duration: 0.3s;
+    border-bottom: 2px solid rgba(146, 102, 102, 0.2);
 }
 
 .dashboardNav li.active {
@@ -406,6 +407,16 @@
     background-size: 36px;
 }
 
+#rosterNav {
+    background: url('../images/icons/groupsGray.svg') no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#rosterNav.active, #rosterNav:hover {
+    background: url('../images/icons/groupsTeal.svg')no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
 #attendanceNav {
     background: url('../images/icons/attendanceGray.svg') no-repeat 0.4rem center;
     background-size: 36px;
@@ -413,6 +424,16 @@
 
 #attendanceNav.active, #attendanceNav:hover {
     background: url('../images/icons/attendanceTeal.svg')no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#sessionHistoryNav {
+    background: url('../images/icons/sessionHistoryGray.svg') no-repeat 0.4rem center;
+    background-size: 36px;
+}
+
+#sessionHistoryNav.active, #sessionHistoryNav:hover {
+    background: url('../images/icons/sessionHistoryTeal.svg')no-repeat 0.4rem center;
     background-size: 36px;
 }
 
@@ -434,7 +455,7 @@
 
 .roomDashboard {
     width: calc(100% - 300px);
-    position: fixed;
+    position: absolute;
     top: 100px;
     right: 0;
 }
@@ -445,6 +466,186 @@
     background-repeat: no-repeat;
     float: right;
     padding: 0 20px 0 44px;
+}
+
+
+.cameraFeed {
+    background-image: url('../images/people/2.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    border-radius: 28px;
+    height: 50vh;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+}
+
+
+/* Roster */
+#rosterList {
+
+}
+
+#rosterList li {
+    width: 24%;
+    height: 160px;
+    background-size: cover;
+    background-position: 50% 50%;
+    border-radius: 28px;
+    margin: 0 0.5% 0.5% 0;
+    display: inline-block;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: grab;
+}
+
+.nametag {
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    background: rgba(0,0,0,0.6);
+    width: calc(100% - 40px);
+    height: 40px;
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    backdrop-filter: blur(30px);
+    line-height: 40px;
+    text-align: center;
+}
+
+.group {
+    background-color: #fff;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    border-radius: 28px;
+    padding: 0;
+    margin: 0;
+}
+
+.group li {
+    width: 49%;
+    height: 160px;
+    background-size: cover;
+    background-position: 50% 50%;
+    border-radius: 28px;
+    margin: 0 0.5% 0.5% 0.5%;
+    display: inline-block;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: grab;
+}
+
+
+
+/* Session History */
+
+.sessionContainer {
+    display: grid;
+    grid-template-areas:
+    'date1 date2 date3'
+    'sessionPreview1 sessionPreview2 sessionPreview3';       
+    grid-column-gap: 20px; 
+    background-color: #fff;
+    border-radius: 28px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    padding: 0 20px;
+    position: relative;
+}
+
+.prevSession {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    background: url('../images/icons/backWhite.svg'), linear-gradient(117.46deg, rgb(134, 208, 202) 11.44%, rgb(53, 177, 166) 74.61%);
+    background-size: cover;
+    box-shadow: rgb(93 193 184 / 60%) 0px 4px 16px;
+    height: 44px;
+    width: 44px;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.date1 {
+    grid-area: date1;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #444;
+    margin: 12px 0 12px 0;
+}
+
+.date2 {
+    grid-area: date2;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #444;
+    margin: 12px 0 12px 0;
+}
+
+.date3 {
+    grid-area: date3;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #444;
+    margin: 12px 0 12px 0;
+}
+
+.next {
+    grid-area: next;
+    background: linear-gradient(117.46deg, rgb(134, 208, 202) 11.44%, rgb(53, 177, 166) 74.61%);
+    box-shadow: rgb(93 193 184 / 60%) 0px 4px 16px;
+    height: 44px;
+    width: 44px;
+    border-radius: 22px;
+}
+
+.sessionPreview1 {
+    grid-area: sessionPreview1;
+}
+
+.sessionPreview2 {
+    grid-area: sessionPreview2;
+}
+
+.sessionPreview3 {
+    grid-area: sessionPreview3;
+}
+
+.sessionPreview {
+    background-color: #fff;
+    border-radius: 28px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.sessionPreview h4 {
+    color: #585858;
+    text-align: center;
+}
+
+.sessionPreview h5 {
+    color: var(--main-color);
+    text-align: center;
+    font-weight: 600;
+}
+
+.sessionPreview img {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.day {
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 16px;
 }
 
 

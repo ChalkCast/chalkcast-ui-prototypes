@@ -164,7 +164,7 @@ select {
 }
 
 .button {
-  background-color: var(--main-color);
+  background: linear-gradient(117.46deg, rgb(134, 208, 202) 11.44%, rgb(53, 177, 166) 74.61%);
   border-radius: 22px;
   height: 44px;
   line-height: 44px;
@@ -176,6 +176,7 @@ select {
   opacity: 1;
   transition-duration: 0.5s;
   color: #fff;
+  padding: 0 20px;
 }
 
 .button:hover {
@@ -1657,6 +1658,16 @@ nav .button-collapse {
   float: left;
 }
 
+.activeSpeaker {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-image: url('../images/animations/activeSpeaker3.gif');
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  float: left;
+}
+
 .videoToggle {
   height: 40px;
   width: 40px;
@@ -1707,7 +1718,7 @@ nav .button-collapse {
 
 .lightbody {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   background: linear-gradient(rgba(255, 255, 255,0.9), rgba(0, 0, 100, 0.1) 100%), linear-gradient(
     32deg, rgba(0, 255, 98, 0.3), rgba(0, 255, 0, 0) 75%), linear-gradient(
     334deg, rgba(0, 0, 255, 0.3), rgba(0, 0, 255, 0) 75%);
@@ -1717,14 +1728,16 @@ nav .button-collapse {
 
 .imageOverlay {
   width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.6));
+  min-height: 100%;
+  background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0.8));
   background-attachment: fixed;
   background-size: cover;
+  overflow: scroll;
 }
 
 .guitar {
   background: url('../images/people/guitar1.jpg');
+  background-attachment: fixed;
   background-size: cover;
 }
 

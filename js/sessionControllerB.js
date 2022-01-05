@@ -124,7 +124,16 @@ window.onload = (event) => {
 
     //Someone random raising their hand
     let random = Math.floor(Math.random()*9) + 2;
-    document.getElementById('handTile'+random).classList.toggle('active');
+    //document.getElementById('handTile'+random).classList.toggle('active');
+    document.getElementById('audio8').className = 'activeSpeaker';
+
+    //Border
+    // document.getElementById('tile8').style.border = '2px solid rgb(93, 193, 184)';
+    // document.getElementById('tile8').style.borderRadius = '30px';
+
+    //Glow
+    // document.getElementById('tile8').style.boxShadow = '0px 0px 35px rgba(93, 193, 184,0.8)';
+    // document.getElementById('tile8').style.borderRadius = '32px';
 
     //Someone random chatting
     for (let i = 0; i < 3; i++) {

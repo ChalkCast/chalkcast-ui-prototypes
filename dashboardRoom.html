@@ -39,16 +39,54 @@
         <div class="logo"></div>
         <ul class="sideNav">
             <a href="./dashboard.html"><li id="backNav"class="backDashboard">Dashboard</li></a>
-            <li id="joinNav" class="active" onclick="dashboardNav('join')">Join</li>
+            <li id="joinNav" onclick="dashboardNav('join')">Join</li>
+            <li id="rosterNav"  onclick="dashboardNav('roster')">Roster</li>
             <li id="attendanceNav"  onclick="dashboardNav('attendance')">Attendance</li>
-            <li id="sessionHistoryNav"  onclick="dashboardNav('sessionHistory')">Session History</li>
+            <li id="sessionHistoryNav"  class="active" onclick="dashboardNav('sessionHistory')">Session History</li>
             <li id="settingsNav" onclick="dashboardNav('settings')">Settings</li>
         </ul>
     </div>
 
     <div class="roomDashboard">
-        <div class="container" id="join">
+        <div class="container" id="join" style="display: none">
             <h2 class="true-teal align-left" style="float: left;">Join <strong>Music Theory 101</strong></h2>
+            <div class="clear-40"></div>
+            <ul class="dashboardNav">
+                <li class="active">Camera</li><li>In Session</li>  
+            </ul>
+            <div class="cameraFeed"></div>
+            <div class="clear-20"></div>
+            <div class="button" style="float: right">Join Session</div>
+        </div> 
+
+        <div class="container" id="roster" style="display: none">
+            <h2 class="true-teal align-left" style="float: left;">Roster</strong></h2>
+            <div class="clear-40"></div>
+            <ul class="dashboardNav">
+                <li class="active">All</li><li>Groups</li> 
+            </ul>
+            <div class="clear-20"></div> 
+            <ul id="rosterList">
+            
+            </ul>
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h1>Group 1</h1>
+                    <ul id="group1" class="group"></ul>
+                </div>
+                <div class="col s12 m6 l6">
+                    <h1>Group 2</h1>
+                    <ul id="group2" class="group"></ul>
+                </div>
+                <div class="col s12 m6 l6">
+                    <h1>Group 3</h1>
+                    <ul id="group2" class="group"></ul>
+                </div>
+                <div class="col s12 m6 l6">
+                    <h1>Group 4</h1>
+                    <ul id="group2" class="group"></ul>
+                </div>
+            </div>
         </div> 
 
         <div class="container" id="attendance" style="display: none">
@@ -65,13 +103,38 @@
             <img style="width: 100%; border-radius: 24px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1)" src="./images/attendanceChart.png"/>
         </div>
 
-        <div class="container" id="sessionHistory" style="display: none">
+        <div class="container" id="sessionHistory" style="display: block">
             <h2 class="true-teal align-left" style="float: left;">Session History</h2>
+            <div class="clear-40"></div>
             <div class="sessionContainer">
+                <div class="prevSession"></div>
+                <div class="date1">DEC 13</br><span class="day">Mon</span></div>
+                <div class="date2">DEC 14</br><span class="day">Tues</span></div>
+                <div class="date3">DEC 15</br><span class="day">Wed</span></div>
 
+                <div class="sessionPreview sessionPreview1">
+                    
+                    <img src="./images/dashboard/engagement.svg"/>
+                    <h5>1 Hour 15 Min</h5>
+                    <h4>Attendance</h4>
+                    <img src="./images/dashboard/attendance75.svg"/>
+                </div>
+                <div class="sessionPreview sessionPreview2">
+      
+                    <img src="./images/dashboard/engagement.svg"/>
+                    <h5>1 Hour 5 Min</h5>
+                    <h4>Attendance</h4>
+                    <img src="./images/dashboard/attendance50.svg"/>
+                </div>
+                <div class="sessionPreview sessionPreview3">
+
+                    <img src="./images/dashboard/engagement.svg"/>
+                    <h5>55 Min</h5>
+                    <h4>Attendance</h4>
+                    <img src="./images/dashboard/attendance62.svg"/>
+                </div>
             </div>
 
-            
         </div>
         
         <div class="container" id="roomSettings" style="display: none">
@@ -90,6 +153,7 @@
      <script src="./js/paper-full.min.js"></script>
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     <script src="./js/sortable.min.js"></script>
      <script>
 
         let popSound = new Audio('./sounds/pop.mp3');
@@ -99,11 +163,13 @@
             document.getElementById('attendanceNav').className = "";
             document.getElementById('sessionHistoryNav').className = "";
             document.getElementById('settingsNav').className = "";
+            document.getElementById('rosterNav').className = "";
             document.getElementById(panel+'Nav').className = "active";
 
             document.getElementById('join').style.display = "none";
             document.getElementById('attendance').style.display = "none";
             document.getElementById('sessionHistory').style.display = "none";
+            document.getElementById('roster').style.display = "none";
             document.getElementById('roomSettings').style.display = "none";
             if (panel === 'settings') {
                 document.getElementById('roomSettings').style.display = "block";
@@ -130,6 +196,58 @@
          function toggleSideNav() {
             document.getElementById('sideNavContainer').classList.toggle('active');
             document.getElementById('sideNavOverlay').classList.toggle('active');
+         }
+
+         let studentList = [
+            'Angelica Gomez',
+            'Billy Hamilton',
+            'Rebecca Kingsley',
+            'Devin Jackson',
+            'Ivania Martinez',
+            'Breanna Harrison',
+            'Casey Bishop',
+            'Kelly Blanco',
+            'Tristan Lee',
+            'Angie White',
+            'Daniela Lopez',
+            'Chad Brown',
+        ]
+
+         window.onload = (event) => {
+            for (let i = 0; i < studentList.length; i++) {
+                let student = document.createElement('li');
+                student.style.backgroundImage = "url('./images/people/"+(i+1)+".jpg')";
+                let studentName = document.createElement('div');
+                studentName.className = 'nametag';
+                studentName.innerHTML = studentList[i];
+
+                student.appendChild(studentName);
+                if (i % 2 === 0) {
+                    document.getElementById('group1').appendChild(student);
+                } 
+                else {
+                    document.getElementById('group2').appendChild(student);
+                }  
+                
+            }
+
+            // new Sortable(document.getElementById('rosterList'), {
+            // // options here
+            // });
+
+            new Sortable(document.getElementById('group1'), {
+                // options here
+                group: 'group1',
+                // pull: [document.getElementById('group2')],
+                // put: [document.getElementById('group2')]
+            });
+
+            new Sortable(document.getElementById('group2'), {
+                // options here
+                group: 'group1',
+                // pull: ['group1','group2'],
+                // put: ['group1','group2']
+            });
          }
      </script>
 </html>
