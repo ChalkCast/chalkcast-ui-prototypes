@@ -40,9 +40,9 @@
         <ul class="sideNav">
             <a href="./dashboard.html"><li id="backNav"class="backDashboard">Dashboard</li></a>
             <li id="joinNav" onclick="dashboardNav('join')">Join</li>
-            <li id="rosterNav"  onclick="dashboardNav('roster')">Roster</li>
+            <li id="rosterNav"  class="active" onclick="dashboardNav('roster')">Roster</li>
             <li id="attendanceNav"  onclick="dashboardNav('attendance')">Attendance</li>
-            <li id="sessionHistoryNav"  class="active" onclick="dashboardNav('sessionHistory')">Session History</li>
+            <li id="sessionHistoryNav"  onclick="dashboardNav('sessionHistory')">Session History</li>
             <li id="settingsNav" onclick="dashboardNav('settings')">Settings</li>
         </ul>
     </div>
@@ -59,7 +59,7 @@
             <div class="button" style="float: right">Join Session</div>
         </div> 
 
-        <div class="container" id="roster" style="display: none">
+        <div class="container" id="roster" style="display: block">
             <h2 class="true-teal align-left" style="float: left;">Roster</strong></h2>
             <div class="clear-40"></div>
             <ul class="dashboardNav">
@@ -80,13 +80,14 @@
                 </div>
                 <div class="col s12 m6 l6">
                     <h1>Group 3</h1>
-                    <ul id="group2" class="group"></ul>
+                    <ul id="group3" class="group"></ul>
                 </div>
                 <div class="col s12 m6 l6">
                     <h1>Group 4</h1>
-                    <ul id="group2" class="group"></ul>
+                    <ul id="group4" class="group"></ul>
                 </div>
             </div>
+            <div class="clear-60"></div> 
         </div> 
 
         <div class="container" id="attendance" style="display: none">
@@ -103,7 +104,7 @@
             <img style="width: 100%; border-radius: 24px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1)" src="./images/attendanceChart.png"/>
         </div>
 
-        <div class="container" id="sessionHistory" style="display: block">
+        <div class="container" id="sessionHistory" style="display: none">
             <h2 class="true-teal align-left" style="float: left;">Session History</h2>
             <div class="clear-40"></div>
             <div class="sessionContainer">
@@ -222,11 +223,17 @@
                 studentName.innerHTML = studentList[i];
 
                 student.appendChild(studentName);
-                if (i % 2 === 0) {
+                if (i % 4 === 0) {
                     document.getElementById('group1').appendChild(student);
                 } 
-                else {
+                else if (i % 4 === 1) {
                     document.getElementById('group2').appendChild(student);
+                }  
+                else if (i % 4 === 2) {
+                    document.getElementById('group3').appendChild(student);
+                }  
+                else if (i % 4 === 3) {
+                    document.getElementById('group4').appendChild(student);
                 }  
                 
             }
@@ -243,6 +250,20 @@
             });
 
             new Sortable(document.getElementById('group2'), {
+                // options here
+                group: 'group1',
+                // pull: ['group1','group2'],
+                // put: ['group1','group2']
+            });
+
+            new Sortable(document.getElementById('group3'), {
+                // options here
+                group: 'group1',
+                // pull: ['group1','group2'],
+                // put: ['group1','group2']
+            });
+
+            new Sortable(document.getElementById('group4'), {
                 // options here
                 group: 'group1',
                 // pull: ['group1','group2'],

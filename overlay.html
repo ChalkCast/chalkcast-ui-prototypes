@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <title>ChalkCast</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ChalkCast">
+    <meta name="keywords" content="ChalkCast">
+    <meta name="author" content="Blake Williford">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="./css/style.css" >
+    <link rel="stylesheet" href="./css/styleB.css" >
+    <link rel="stylesheet" href="./css/styleBubbles.css" >
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- Hotjar Tracking Code for https://chalkcast.github.io/chalkcast-ui-prototypes/sessionOwner.html -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2593053,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+
+  <body class="darkbody">
+    <div style="padding: 0; margin: 0; position: fixed; width: 100vw; height: 100vh; background-color: rgba(109, 224, 199, 0.3); z-index: 5;"></div>
+
+      <div id="sessionNav">
+        <div id="yourStream" class="active" onclick="expandYourStream()"></div>
+        <div id="reverseCamera"></div>
+
+        <ul class="informationToggles">
+            <li id="audioToggle" onclick="toggleInformation('audioToggle')" class="active"></li>
+            <li id="videoToggle" onclick="toggleInformation('videoToggle')" class="active"></li>
+            <li id="streamToggle" onclick="toggleInformation('streamToggle')"></li>
+        </ul>
+
+        <ul class="toolbar">
+          <!-- <li id="nudge" onclick="toggleNudge()"></li> -->
+          <!-- <li id="raisehand" onclick="toggleRaisedHand()"></li> -->
+          <li id="chat" onclick="togglePanel('chat')"><div id="newChatIndicator">3</div></li>
+          <li id="groups"></li>
+          <li id="chalk" onclick="toggleChalkboard()"></li>
+          <!--<li id="quiz" onclick="togglePanel('quiz')"></li> -->
+          <li id="settings" onclick="togglePanel('settings')"></li>
+          
+        </ul>
+
+        <div id="exit"></div>
+      </div>
+
+      <div id="smallPanel">
+        <h4 class="title" id="smallPanelTitle">Smart shape tool</h4>
+        <div class="exit" onclick="toggleSmallPanel('remove')"></div>
+        <div class="nudgeSection">
+          <img src="./images/smartShape.png" style="width: 100%; border-radius: 28px;" />
+          <p>This tool predicts what shape you are trying to draw and automatically beautifies it (Works for lines, circles, squares, polygons, and arrows).</p>
+          <div class="feature">Don't show this message again</div><div id="switch1" class="switch off" onclick="toggleSwitch('1')"></div>
+        </div>
+        <div class="clear-20"></div>
+      </div>
+
+      <div id="nudgePanel">
+        <h4 class="title" id="nudgeTitle">Nudge</h4>
+        <div class="exit" onclick="toggleNudgePanel()"></div>
+        <div class="nudgeSection">
+          <input placeholder="Type message here"></input>
+          <span class="caption">36 characters max</span>
+        </div>
+        <div id="addNudgeImage"></div>
+        <div class="nudgeSection">
+          <div class="button" onclick="toggleNudgePanel()">Send</div>
+        </div>
+      </div>
+
+      <!-- <div id="smallPanel">
+        <h4 class="title" id="smallPanelTitle">Removing guest</h4>
+        <div class="exit" onclick="toggleSmallPanel('remove')"></div>
+        <div class="nudgeSection">
+        <p>This guest will not be allowed back in this session.</p>
+          <div class="button boot" onclick="toggleSmallPanel('remove')">Remove</div>
+        </div>
+      </div> -->
+      
+      <div id="panel">
+          <div id="chatPanel" style="display: none">
+            <h4 class="title">Chat</h4>
+            <div class="exit" onclick="togglePanel('chat')"></div>
+            <ul id="chatList">
+                <li onclick="toggleThread('Everyone')">Everyone</li>
+            </ul>
+          </div>
+
+          <div id="settingsPanel" style="display: none">
+            <div class="exit" onclick="togglePanel('settings')"></div>
+            <h4 class="title">Settings</h4>
+            <div class="panelSection">
+              <h5>Room Link</h5>
+              <div class="button linkButton" onclick="toggleNotification('<h4>Room link copied to clipboard</h4>')">Copy Link</div>
+            </div>
+            <div class="panelSection">
+              <h5>Lock Room</h5>
+              <div class="lockToggle">
+                <div id="unlockedRoom" class="active" onclick="toggleRoomLock('unlocked')">Unlocked</div><div id="lockedRoom" onclick="toggleRoomLock('locked')">Locked</div>
+              </div>
+              <div id="lockedCaption" class="caption">Anyone with the link can join</div>
+            </div>
+            <div class="panelSection">
+              <h5>Participant Features</h5>
+              <div class="feature">Screen Share</div><div id="switch1" class="switch on" onclick="toggleSwitch('1')"></div>
+              <div class="feature">Chat with Everyone</div><div id="switch2" class="switch on" onclick="toggleSwitch('2')"></div>
+              <div class="feature">Direct Message Chat</div><div id="switch3" class="switch on" onclick="toggleSwitch('3')"></div>
+              <div class="clear-0"></div>
+            </div>
+            <div class="panelSection">
+              <h5>Preferences</h5>
+              <div class="feature">Upon entry, mic is OFF</div><div id="switch4" class="switch" onclick="toggleSwitch('4')"></div>
+              <div class="feature">Upon entry, camera is OFF</div><div id="switch5" class="switch" onclick="toggleSwitch('5')"></div>
+              <div class="clear-0"></div>
+              <p>Microphone</p>
+              <select name="mic" id="mic">
+                <option value="mic1">Microphone 1</option>
+                <option value="mic2">Microphone 2</option>
+              </select>
+              <p>Audio Output</p>
+              <select name="audio" id="audio">
+                <option value="sepakers1">Speaker 1</option>
+                <option value="speakers2">Speaker 2</option>
+              </select>
+              <p>Video Source</p>
+              <select name="video" id="video">
+                <option value="video1">Webcam 1</option>
+                <option value="video2">Webcam 2</option>
+              </select>
+              <div class="yourStreamSettings"></div>
+            </div>
+          </div>
+      </div>
+
+      <div id="chatThread" style="display: block">
+        <h4 class="title" id="threadName">Phil Mok</h4>
+        <div class="back" onclick="toggleThread('exit')"></div>
+        <div class="button boot" onclick="removeGuest()">Remove</div>
+        <ul class="chatFilter">
+          <li id="allFilter" onclick="chatFilter('all')" class="active">All</li><li id="questionsFilter" onclick="chatFilter('questions')">Questions</li><li id="linksFilter" onclick="chatFilter('links')">Links</li>
+        </ul>
+        <ul class="chatContainer">
+          <li class="chat">
+            <div class="caption"><strong>Student</strong> 12:45PM</div>
+            <div class="chatBubble">This is a chat that someone sent.</div>
+          </li>
+          <li class="chat">
+            <div class="caption"><strong>Student</strong> 12:45PM</div>
+            <div class="chatLabel question">Question</div>
+            <div class="chatBubble">This is a question?</div>
+          </li>
+          <li class="chat">
+            <div class="caption"><strong>Student</strong> 12:55PM</div>
+            <div class="chatLabel link">Link</div>
+            <div class="chatBubble">http://www.chalkcast.org</div>
+          </li>
+        </ul>
+        <div class="chatInputContainer">
+          <input placeholder="Type something here"></input>
+        </div>
+      </div>
+
+      <div id="chalkboardContainer">
+
+        <canvas id="chalkboard" class="chalkboard" hidpi="off" resize="true">     </canvas>
+        <div id="templateToggle" onclick="toggleTemplateMenu()"></div>
+        <div id="templateMenu">
+          <ul class="templateCategory">
+            <li id="MathCategory" class="active" onclick="toggleTemplateCategory('Math')">Math</li>
+            <li id="LanguageCategory" onclick="toggleTemplateCategory('Language')">Language</li>
+            <li id="GeographyCategory" onclick="toggleTemplateCategory('Geography')">Geography</li>
+            <li id="ScienceCategory" onclick="toggleTemplateCategory('Science')">Science</li>
+            <li id="MusicCategory" onclick="toggleTemplateCategory('Music')">Music</li>
+            <li id="BusinessCategory" onclick="toggleTemplateCategory('Business')">Business</li>
+          </ul>
+          <div class="templateContainer">
+            <ul class="templatesList" id="Math" style="display: block">
+              <li id="gridSmall" onclick="toggleTemplate('gridSmall')">Small Grid</li>
+              <li id="gridLarge" onclick="toggleTemplate('gridLarge')">Large Grid</li>
+              <li id="dotsSmall" onclick="toggleTemplate('dotsSmall')">Small Dots</li>
+              <li id="dotsLarge" onclick="toggleTemplate('dotsLarge')">Large Dots</li>
+              <li id="vennDiagram" onclick="toggleTemplate('vennDiagram')">Venn Diagram</li>
+            </ul>
+            <ul class="templatesList" id="Language" style="display: none">
+              <li id="lines" onclick="toggleTemplate('lines')">Notebook</li>
+            </ul>
+            <ul class="templatesList" id="Geography" style="display: none">
+              <li id="worldMap" onclick="toggleTemplate('worldMap')">World Map</li>
+              <li id="usMap" onclick="toggleTemplate('usMap')">US Map</li>
+              <li id="europeMap" onclick="toggleTemplate('europeMap')">Europe Map</li>
+              <li id="asiaMap" onclick="toggleTemplate('asiaMap')">Asia Map</li>
+            </ul>
+            <ul class="templatesList" id="Science" style="display: none">
+              <li id="periodicTable" onclick="toggleTemplate('periodicTable')">Periodic Table</li>
+            </ul>
+            <ul class="templatesList" id="Music" style="display: none">
+              <li id="sheetMusic" onclick="toggleTemplate('sheetMusic')">Sheet Music</li>
+              <li id="tabGuitar" onclick="toggleTemplate('tabGuitar')">Guitar Tab</li>
+            </ul>
+            <ul class="templatesList" id="Business" style="display: none">
+              <li id="businessModel" onclick="toggleTemplate('businessModel')">Business Model</li>
+              <li id="valueProp" onclick="toggleTemplate('valueProp')">Value Proposition</li>
+          </div>
+          
+        </div>
+          <!-- <option value="">Template</option>
+          <option value="gridSmall">Grid (small)</option>
+          <option value="gridLarge">Grid (large)</option>
+          <option value="dotsSmall">Dots (small)</option>
+          <option value="dotsLarge">Dots (large)</option>
+          <option value="lines">Lines</option>
+          <option value="worldMap">World Map</option>
+          <option value="usMap">US Map</option>
+          <option value="sheetMusic">Sheet Music</option>
+          <option value="tabGuitar">Guitar Tab</option> -->
+        
+        <div class="exit" onclick="toggleChalkboard()"></div>
+        <ul id="toolbar">
+          <li id="nightMode" onclick="toggleBackground('day')" class="active"></li>
+          <li id="dayMode" onclick="toggleBackground('night')"></li>
+
+          <li id="draw" class="active" onclick="changeTool('draw')"></li>
+          <li id="line" onclick="changeTool('line')"></li>
+          <li id="square" onclick="changeTool('square')"></li>
+          <li id="circle" onclick="changeTool('circle')"></li>
+          <li id="smartShape" onclick="changeTool('smartShape')"></li>
+          <li id="text" onclick="changeTool('text')"></li>
+          <li id="eraser" onclick="changeTool('eraser')"></li>
+
+          <li id="mainColor" class="active" onclick="changeColor('mainColor')"></li>
+          <li id="blue" onclick="changeColor('blue')"></li>
+          <li id="green" onclick="changeColor('green')"></li>
+          <li id="red" onclick="changeColor('red')"></li>
+          <li id="purple" onclick="changeColor('purple')"></li>
+          <li id="orange" onclick="changeColor('orange')"></li>
+
+          <li id="clear" onclick="clearChalkboard()"></li>
+
+          <li id="save" onclick="saveChalkboard()"></li>
+        </ul>
+
+        <div id="textContainer"></div>
+      </div>
+
+      <div id="prevButton" onclick="prevScreen()"></div>
+      <div id="nextButton" onclick="nextScreen()"></div>
+
+      <div id="expandedTile"></div>
+      <ul id="tileList" class="streamContainer">
+      </ul>      
+
+      <div id="notification"><h4>Vape kid has left the session</h4></div>
+
+
+    </div>
+
+     <!--Import jQuery before materialize.js-->
+     <!--JS Frameworks-->
+     <script src="./js/paper-full.min.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     <script src="./js/chalkboard.js"></script>
+     <script src="./js/sessionControllerB.js"></script>
+    </body>
+</html>
