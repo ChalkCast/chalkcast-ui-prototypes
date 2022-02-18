@@ -11,13 +11,17 @@ html {
 }
 
 ::-webkit-scrollbar {
-  height: 0px;
-  width: 0px;
+  height: 80%;
+  width: 4px;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  height: 0px;
-  width: 0px;
+  height: 80%;
+  width: 4px;
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 2px;
 }
 
 .clear-0 {
@@ -239,14 +243,14 @@ body {
 body::-webkit-scrollbar {
   background-color: rgba(0,0,0,0.2);
   height: 0px;
-  width: 0px;
+  width: 2px;
   border-radius: 2px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.9);
   height: 0px;
-  width: 0px;
+  width: 2px;
   border-radius: 2px;
 }
 
